@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
@@ -7,27 +7,29 @@ const initialState = {
 };
 
 export const fetchHouses = createAsyncThunk('houses/fetchHouses',
-  async (house) => {
+  async () => {
     const response = await axios('http://localhost:3000/houses');
     return response.data;
-});
+  });
 
 const housesSlice = createSlice({
   name: 'houses',
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(fetchHouses.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(fetchHouses.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.housesList = action.payload;
-      })
-      .addCase(fetchHouses.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.error.message;
-      });
+      .addCase(fetchHouses.pending, (state) => ({
+        ...state,
+        status: 'loading',
+      }))
+      .addCase(fetchHouses.fulfilled, (state, action) => ({
+        ...state,
+        housesList: action.payload,
+        status: 'succeeded',
+      }))
+      .addCase(fetchHouses.rejected, (state) => ({
+        ...state,
+        status: 'error',
+      }));
   },
 });
 
