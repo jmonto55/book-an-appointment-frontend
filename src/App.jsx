@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import House from './components/House';
+import HousesList from './components/HousesList';
 import Reservation from './components/Reservation';
 import MyReservations from './components/MyReservations';
 import AddHouse from './components/AddHouse';
@@ -11,7 +11,7 @@ function App() {
     <div>
       <Navbar />
       <Routes>
-        <Route path="/" element={<House />} />
+        <Route path="/" element={<HousesList />} />
         <Route path="/reserve" element={<Reservation />} />
         <Route path="/myReservations" element={<MyReservations />} />
         <Route path="/addHouse" element={<AddHouse />} />
