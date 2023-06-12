@@ -25,6 +25,9 @@ const Navbar = () => (
       <ul>
         <li><NavLink to="/" onClick={visitPageAction}>Houses</NavLink></li>
         <li><NavLink to="/reserve" onClick={visitPageAction}>Reservations</NavLink></li>
+        <li><NavLink to="/myReservations" onClick={visitPageAction}>My Reservations</NavLink></li>
+        <li><NavLink to="/addHouse" onClick={visitPageAction}>Add House</NavLink></li>
+        <li><NavLink to="/deleteHouse" onClick={visitPageAction}>Delete House</NavLink></li>
         {/* <li className="vertical-line" />
         <li><NavLink to="/my-profile" onClick={visitPageAction}>My Profile</NavLink></li> */}
       </ul>
