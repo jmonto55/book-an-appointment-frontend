@@ -8,7 +8,7 @@ import DeleteHouse from './components/DeleteHouse';
 
 function App() {
   return (
-    <div>
+    <div className="w-full overflow-x-hidden">
       <Navbar />
       <Routes>
         <Route path="/" element={<HousesList />} />

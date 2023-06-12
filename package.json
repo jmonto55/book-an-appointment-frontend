@@ -11,6 +11,7 @@
     "cross-env": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.9.0",
     "react-redux": "^8.0.7",
     "react-router": "^6.12.1",
     "react-router-dom": "^6.12.1",
