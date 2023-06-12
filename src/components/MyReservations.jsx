@@ -1,8 +1,6 @@
-import React from 'react';
-
 const MyReservations = () => (
   <div>
-    MyReservations
+    List all reservations for current user.
   </div>
 );
 

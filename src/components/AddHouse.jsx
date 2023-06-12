@@ -1,6 +1,6 @@
 const AddHouse = () => (
   <div>
-    <h1>AddHouse</h1>
+    Actions to create a new House.
   </div>
 );
 

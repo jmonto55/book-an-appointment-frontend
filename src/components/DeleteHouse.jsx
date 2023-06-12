@@ -1,8 +1,6 @@
-import React from 'react';
-
 const DeleteHouse = () => (
   <div>
-    DeleteHouse
+    Actions to delete a House.
   </div>
 );
 
