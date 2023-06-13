@@ -9,7 +9,7 @@ const ShowHouse = () => {
     <>
       <h2 className="mt-[70px] text-center font-black text-4xl">HOUSE DETAILS</h2>
       <div className="mx-auto xl:mt-[140px] mt-10 w-screen max-w-[1840px] flex flex-col items-center xl:flex-row justify-evenly">
-        <div className="bg-lime p-6 pl-12 w-[90px] rounded-r-full absolute bottom-10 left-0">
+        <div className="bg-lime p-6 pl-4 md:pl-12 rounded-r-full absolute bottom-6 md:bottom-10 left-0">
           <NavLink to="/">
             <BiLeftArrow size={20} className="cursor-pointer text-white-100" />
           </NavLink>
