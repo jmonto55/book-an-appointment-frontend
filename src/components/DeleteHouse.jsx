@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchHouses } from '../redux/houses/housesSlice';
+import { deleteHouse } from '../redux/houses/deleteHouseSlice';
 
 const DeleteHouse = () => {
   const dispatch = useDispatch();
@@ -9,6 +10,10 @@ const DeleteHouse = () => {
   useEffect(() => {
     dispatch(fetchHouses());
   }, [dispatch]);
+
+  const handleDelete = (houseId) => {
+    dispatch(deleteHouse(houseId));
+  };
 
   return (
     <div>
@@ -21,6 +26,7 @@ const DeleteHouse = () => {
             <p>{house.price}</p>
             <p>{house.address}</p>
             <p>{house.city}</p>
+            <button type="button" onClick={() => handleDelete(house.id)}>Delete</button>
           </li>
         ))}
       </ul>
