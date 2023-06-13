@@ -4,13 +4,24 @@ import axios from 'axios';
 const initialState = {
   housesList: [],
   isLoading: false,
+  status: null,
 };
 
-export const fetchHouses = createAsyncThunk('houses/fetchHouses',
+export const fetchHouses = createAsyncThunk(
+  'houses/fetchHouses',
   async () => {
-    const response = await axios('http://localhost:3000/houses');
+    const response = await axios.get('http://localhost:3000/houses');
     return response.data;
-  });
+  },
+);
+
+export const createHouse = createAsyncThunk(
+  'houses/createHouse',
+  async (houseData) => {
+    const response = await axios.post('http://localhost:3000/houses', houseData);
+    return response.data;
+  },
+);
 
 const housesSlice = createSlice({
   name: 'houses',
@@ -27,6 +38,19 @@ const housesSlice = createSlice({
         status: 'succeeded',
       }))
       .addCase(fetchHouses.rejected, (state) => ({
+        ...state,
+        status: 'error',
+      }))
+      .addCase(createHouse.pending, (state) => ({
+        ...state,
+        status: 'pending',
+      }))
+      .addCase(createHouse.fulfilled, (state, action) => ({
+        ...state,
+        housesList: [...state.housesList, action.payload],
+        status: 'succeeded',
+      }))
+      .addCase(createHouse.rejected, (state) => ({
         ...state,
         status: 'error',
       }));
