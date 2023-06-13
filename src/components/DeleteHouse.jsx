@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import Swal from 'sweetalert2';
 import { fetchHouses } from '../redux/houses/housesSlice';
 import { deleteHouse } from '../redux/houses/deleteHouseSlice';
 
@@ -12,7 +13,21 @@ const DeleteHouse = () => {
   }, [dispatch]);
 
   const handleDelete = (houseId) => {
-    dispatch(deleteHouse(houseId));
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this house!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      cancelButtonText: 'Cancel',
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deleteHouse(houseId)).then(() => {
+          Swal.fire('Deleted!', 'The house has been deleted.', 'success');
+        });
+      }
+    });
   };
 
   return (
