@@ -20,6 +20,10 @@ module.exports = {
       animation: {
         'pulse-slow': 'pulse 3s linear infinite',
       },
+      screens: {
+        tablet: '1640px',
+        xl: '1340px',
+      },
     },
   },
   plugins: [],

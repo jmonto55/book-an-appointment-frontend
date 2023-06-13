@@ -57,7 +57,7 @@ const HouseSlider = () => {
               </NavLink>
               <NavLink
                 to="/house"
-                className="hidden 2xl:block"
+                className="hidden tablet:block"
                 onClick={() => {
                   dispatch(fetchHouse(housesList[indexThree].id));
                 }}
