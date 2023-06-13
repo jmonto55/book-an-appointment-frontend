@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
+// import { NavLink } from 'react-router-dom';
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
 import { fetchHouses } from '../redux/houses/housesSlice';
 import House from './House';
