@@ -3,12 +3,12 @@ import { MdLocationOn } from 'react-icons/md';
 import { RxDotFilled } from 'react-icons/rx';
 
 const House = ({ house }) => (
-  <div className="group hover:cursor-pointer hover:shadow-lg min-w-[250px] rounded-md hover:scale-105 pb-6 w-full flex flex-col items-center">
+  <div className="group hover:cursor-pointer hover:shadow-lg min-w-[250px] rounded-md hover:scale-105 duration-500 pb-6 w-full flex flex-col items-center">
     <div
-      className="group-hover:rounded-none group-hover:w-full lg:group-hover:w-[370px] w-[220px] h-[220px] lg:w-[370px] lg:h-[370px] rounded-full bg-center bg-cover duration-400"
+      className="group-hover:rounded-none group-hover:w-full lg:group-hover:w-[370px] w-[220px] h-[220px] lg:w-[370px] lg:h-[370px] rounded-full bg-center bg-cover duration-500"
       style={{ backgroundImage: `url(${house.photo})` }}
     />
-    <h2 className="text-center mt-10 font-black text-2xl">{house.name}</h2>
+    <h2 className="text-center mt-10 font-black text-2xl tracking-wider">{house.name}</h2>
     <ul className="flex top-4 justify-center py-2 list-none">
       {Array.from({ length: 10 }, (_, i) => (
         <li className="text-sm text-gray-100" key={i}><RxDotFilled /></li>

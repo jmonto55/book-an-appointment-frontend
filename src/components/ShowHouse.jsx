@@ -7,7 +7,7 @@ const ShowHouse = () => {
   const { currentHouse } = useSelector((store) => store.houses);
   return (
     <>
-      <h2 className="mt-[70px] text-center font-black text-4xl">HOUSE DETAILS</h2>
+      <h2 className="mt-[70px] text-center font-black text-4xl tracking-wider">HOUSE DETAILS</h2>
       <div className="mx-auto xl:mt-[140px] mt-10 w-screen max-w-[1840px] flex flex-col items-center xl:flex-row justify-evenly">
         <div className="bg-lime p-6 pl-4 md:pl-12 rounded-r-full absolute bottom-6 md:bottom-10 left-0">
           <NavLink to="/">
@@ -19,7 +19,7 @@ const ShowHouse = () => {
           style={{ backgroundImage: `url(${currentHouse.photo})` }}
         />
         <div className="flex flex-col items-start justify-between min-w-[375px] max-w-[700px] h-[400px]">
-          <h2 className="mt-8 xl:mt-0 text-start font-black text-4xl">
+          <h2 className="mt-8 xl:mt-0 text-start font-black text-4xl tracking-wider">
             {currentHouse.name}
             <p className="font-medium text-[14px]">*$45 deposit upon any reservation.</p>
           </h2>
