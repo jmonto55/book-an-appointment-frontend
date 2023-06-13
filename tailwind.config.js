@@ -16,6 +16,9 @@ module.exports = {
       fontFamily: {
         noto: ['Noto Sans Display', 'sans-serif'],
       },
+      animation: {
+        'pulse-slow': 'pulse 3s linear infinite',
+      },
     },
   },
   plugins: [],
