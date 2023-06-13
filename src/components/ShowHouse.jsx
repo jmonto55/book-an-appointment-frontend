@@ -7,24 +7,24 @@ const ShowHouse = () => {
   const { currentHouse } = useSelector((store) => store.houses);
   return (
     <>
-      <h2 className="mt-[120px] text-center font-black text-4xl">HOUSE DETAILS</h2>
-      <div className="mt-[120px] w-screen flex justify-evenly">
+      <h2 className="mt-[70px] text-center font-black text-4xl">HOUSE DETAILS</h2>
+      <div className="mx-auto xl:mt-[140px] mt-10 w-screen max-w-[1840px] flex flex-col items-center xl:flex-row justify-evenly">
         <div className="bg-lime p-6 pl-12 w-[90px] rounded-r-full absolute bottom-10 left-0">
           <NavLink to="/">
             <BiLeftArrow size={20} className="cursor-pointer text-white-100" />
           </NavLink>
         </div>
         <div
-          className="w-[700px] h-[400px] bg-center bg-cover"
+          className="mt-4 xl:mt-0 w-[370px] h-[185px] sm:w-[550px] sm:h-[275px] xl:w-[700px] xl:h-[400px] bg-center bg-cover rounded-lg"
           style={{ backgroundImage: `url(${currentHouse.photo})` }}
         />
-        <div className="flex flex-col items-start justify-between min-w-[375px] h-[400px]">
-          <h2 className="text-start font-black text-4xl">
+        <div className="flex flex-col items-start justify-between min-w-[375px] max-w-[700px] h-[400px]">
+          <h2 className="mt-8 xl:mt-0 text-start font-black text-4xl">
             {currentHouse.name}
-            <p className="font-medium text-[14px]">*$45 deposit upon any reservation</p>
+            <p className="font-medium text-[14px]">*$45 deposit upon any reservation.</p>
           </h2>
-          <p className="w-full text-center text-black-100 mt-4 text-lg bg-gray-200 p-2">{currentHouse.description}</p>
-          <div className="w-full text-xl mx-auto w-full flex bg-gray-200 p-2 flex-col items-center lg:flex-row lg:justify-between text-black-100 mt-4 text-lg">
+          <p className="w-full text-start text-black-100 mt-4 text-lg bg-gray-200 p-2">{currentHouse.description}</p>
+          <div className="w-full text-xl mx-auto w-full flex bg-gray-200 p-2 items-center lg:flex-row lg:justify-between text-black-100 mt-4 text-lg">
             <div className="flex gap-2 items-center">
               <MdLocationOn size={22} />
               <p>{currentHouse.city}</p>
