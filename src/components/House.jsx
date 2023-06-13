@@ -5,7 +5,7 @@ import { RxDotFilled } from 'react-icons/rx';
 const House = ({ house }) => (
   <div className="group hover:cursor-pointer hover:shadow-lg min-w-[250px] rounded-md hover:scale-105 pb-6 w-full flex flex-col items-center">
     <div
-      className="group-hover:rounded-none group-hover:w-full lg:group-hover:w-[370px] w-[220px] h-[220px] lg:w-[370px] lg:h-[370px] rounded-full bf-center bg-cover duration-400"
+      className="group-hover:rounded-none group-hover:w-full lg:group-hover:w-[370px] w-[220px] h-[220px] lg:w-[370px] lg:h-[370px] rounded-full bg-center bg-cover duration-400"
       style={{ backgroundImage: `url(${house.photo})` }}
     />
     <h2 className="text-center mt-10 font-black text-2xl">{house.name}</h2>

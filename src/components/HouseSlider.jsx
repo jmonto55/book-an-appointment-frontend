@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
-import { fetchHouses } from '../redux/houses/housesSlice';
+import { fetchHouses, fetchHouse } from '../redux/houses/housesSlice';
 import House from './House';
 
 const HouseSlider = () => {
@@ -38,15 +38,32 @@ const HouseSlider = () => {
         <ul className="flex gap-2 md:gap-14">
           {housesList.length > 0 && (
             <>
-              <li>
+              <NavLink
+                to="/house"
+                onClick={() => {
+                  dispatch(fetchHouse(housesList[indexOne].id));
+                }}
+              >
                 <House house={housesList[indexOne]} />
-              </li>
-              <li className="hidden sm:block">
+              </NavLink>
+              <NavLink
+                to="/house"
+                className="hidden sm:block"
+                onClick={() => {
+                  dispatch(fetchHouse(housesList[indexTwo].id));
+                }}
+              >
                 <House house={housesList[indexTwo]} />
-              </li>
-              <li className="hidden 2xl:block">
+              </NavLink>
+              <NavLink
+                to="/house"
+                className="hidden 2xl:block"
+                onClick={() => {
+                  dispatch(fetchHouse(housesList[indexThree].id));
+                }}
+              >
                 <House house={housesList[indexThree]} />
-              </li>
+              </NavLink>
             </>
           )}
         </ul>

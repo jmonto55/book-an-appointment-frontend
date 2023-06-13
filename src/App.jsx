@@ -5,7 +5,7 @@ import Reservation from './components/Reservation';
 import MyReservations from './components/MyReservations';
 import AddHouse from './components/AddHouse';
 import DeleteHouse from './components/DeleteHouse';
-import House from './components/House';
+import ShowHouse from './components/ShowHouse';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Route path="/myReservations" element={<MyReservations />} />
         <Route path="/addHouse" element={<AddHouse />} />
         <Route path="/deleteHouse" element={<DeleteHouse />} />
-        <Route path="/house" element={<House />} />
+        <Route path="/house" element={<ShowHouse />} />
       </Routes>
     </div>
   );
