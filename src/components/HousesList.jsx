@@ -3,7 +3,7 @@ import HouseSlider from './HouseSlider';
 
 export default function HousesList() {
   return (
-    <div className="h-screen flex flex-col justify-center">
+    <div className="h-screen w-full xl:w-5/6 flex flex-col justify-center">
       <h1 className="text-center text-4xl font-black tracking-wider">LATEST HOUSES</h1>
       <p className="mb-10 text-center text-gray-100 text-md font-medium mt-4">Please select a House</p>
       <ul className="flex top-4 justify-center py-2 list-none mb-20">
