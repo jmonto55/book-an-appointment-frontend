@@ -18,12 +18,8 @@ export const fetchHouses = createAsyncThunk(
 export const createHouse = createAsyncThunk(
   'houses/createHouse',
   async (houseData) => {
-    try {
-      const response = await axios.post('http://localhost:3000/houses', houseData);
-      return response.data;
-    } catch (error) {
-      return error.response.data;
-    }
+    const response = await axios.post('http://localhost:3000/houses', houseData);
+    return response.data;
   },
 );
 
