@@ -5,11 +5,12 @@ import { MdLocationOn, MdAdsClick } from 'react-icons/md';
 
 const ShowHouse = () => {
   const { currentHouse } = useSelector((store) => store.houses);
+
   return (
-    <div className="w-full relative">
+    <button type="button" className="w-full relative">
       <h2 className="mt-[70px] text-center font-black text-4xl tracking-wider">HOUSE DETAILS</h2>
       <div className="mx-auto xl:mt-[140px] mt-6 max-w-[1840px] flex w-full flex-col items-center xl:flex-row justify-evenly">
-        <div className="bg-lime p-6 pl-4 md:pl-12 rounded-r-full absolute bottom-6 md:bottom-10 left-0">
+        <div className="z-20 bg-lime p-6 pl-4 md:pl-12 rounded-r-full absolute bottom-6 md:bottom-10 left-0">
           <NavLink to="/">
             <BiLeftArrow size={20} className="cursor-pointer text-white-100" />
           </NavLink>
@@ -47,7 +48,7 @@ const ShowHouse = () => {
           </button>
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 export default ShowHouse;

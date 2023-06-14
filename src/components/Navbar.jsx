@@ -21,8 +21,10 @@ const Navbar = () => {
 
   const closeMenu = () => {
     setOpen(!open);
-    const nav = document.querySelector('nav');
-    nav.style.display = 'none';
+    if (window.innerWidth < 1340) {
+      const nav = document.querySelector('nav');
+      nav.style.display = 'none';
+    }
   };
 
   useEffect(() => {
@@ -36,6 +38,7 @@ const Navbar = () => {
       if (event.matches) {
         const nav = document.querySelector('nav');
         nav.style.display = 'flex';
+        nav.style.position = 'static';
       }
     };
 
@@ -49,6 +52,7 @@ const Navbar = () => {
       if (event.matches) {
         const nav = document.querySelector('nav');
         nav.style.display = 'none';
+        nav.style.position = 'fixed';
         setOpen(true);
       }
     };
@@ -60,8 +64,9 @@ const Navbar = () => {
     <>
       {open ? (
         <HiOutlineMenuAlt4
+          id="menu"
           size={30}
-          className="absolute top-8 left-8 xl:hidden cursor-pointer"
+          className="absolute z-20 top-8 left-8 xl:hidden cursor-pointer"
           onClick={openMenu}
         />
       ) : (
@@ -72,7 +77,7 @@ const Navbar = () => {
           onClick={closeMenu}
         />
       )}
-      <nav className="bg-white z-10 relative w-1/6 min-w-[250px] max-w-[280px] h-screen flex-col p-2 pl-6 pt-28 border-r-2 hidden xl:flex">
+      <nav className={`${window.innerWidth < 1340 ? 'absolute' : 'static'} bg-white z-10 relative w-1/6 min-w-[250px] max-w-[280px] h-screen flex-col p-2 pl-6 pt-28 border-r-2 hidden xl:flex`}>
         <div className="w-1/4">
           <h1 className="font-kaushan text-3xl font-bold -rotate-12 mb-20 pl-4 underline decoration-4 underline-offset-4">Alpha Reservations</h1>
         </div>
@@ -88,7 +93,10 @@ const Navbar = () => {
             >
               <NavLink
                 to={link.path}
-                onClick={() => changeStyles(index)}
+                onClick={() => {
+                  changeStyles(index);
+                  closeMenu();
+                }}
                 style={({ isActive }) => ({
                   backgroundColor: isActive ? changeStyles(index) : '#fff',
                   color: isActive ? changeStyles(index) : '#000',
