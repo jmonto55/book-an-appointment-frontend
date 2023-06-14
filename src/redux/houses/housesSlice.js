@@ -62,24 +62,23 @@ const housesSlice = createSlice({
       }))
       .addCase(fetchHouse.rejected, (state, action) => ({
         ...state,
-
         isLoading: false,
         error: action.error.message,
-
-      }))
+      }));
+    builder
       .addCase(createHouse.pending, (state) => ({
         ...state,
-        status: 'pending',
+        isLoading: true,
       }))
       .addCase(createHouse.fulfilled, (state, action) => ({
         ...state,
         housesList: [...state.housesList, action.payload],
-        status: 'succeeded',
+        isLoading: false,
       }))
-      .addCase(createHouse.rejected, (state) => ({
+      .addCase(createHouse.rejected, (state, action) => ({
         ...state,
-        status: 'error',
-        
+        isLoading: false,
+        error: action.error.message,
       }));
   },
 });
