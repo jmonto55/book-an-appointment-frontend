@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { BiLeftArrow } from 'react-icons/bi';
+import { NavLink } from 'react-router-dom';
 import { createHouse } from '../redux/houses/housesSlice';
 
 const AddHouse = () => {
@@ -51,13 +53,16 @@ const AddHouse = () => {
 
   return (
     <div className="w-full bg-center bg-cover" style={{ backgroundImage: 'url(https://rb.gy/k7lc1)' }}>
-      <div
-        className="p-8 h-screen w-full flex flex-col justify-center bg-lime bg-opacity-80"
-      >
-        <h2 className="font-black uppercase mx-auto text-center text-2xl text-white">ADD A NEW HOUSE</h2>
+      <div className="hover:bg-opacity-100 shadow-lg z-20 bg-gray-100 p-6 pl-4 md:pl-12 rounded-r-full absolute bottom-6 md:bottom-10 left-0 border-2 border-t-0 border-l-0 border-white/25 backdrop-filter backdrop-blur-lg bg-opacity-70">
+        <NavLink to="/">
+          <BiLeftArrow size={20} className="cursor-pointer text-white" />
+        </NavLink>
+      </div>
+      <div className="p-8 h-screen w-full flex flex-col justify-evenly bg-lime bg-opacity-80">
+        <h2 className="font-black uppercase mx-auto text-center text-4xl text-white tracking-wider">ADD A NEW HOUSE</h2>
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col items-end container mx-auto border px-6 py-8 max-w-md mt-6 bg-gray-100 rounded-md"
+          className="border-2 border-t-0 border-l-0 border-white/25 backdrop-filter backdrop-blur-lg bg-opacity-70 shadow-xl flex flex-col items-end container mx-auto border px-6 py-8 max-w-md mt-6 bg-gray-100 rounded-md"
         >
           {formData.map((field) => (
             <input
