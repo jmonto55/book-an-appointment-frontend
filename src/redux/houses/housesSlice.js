@@ -5,13 +5,24 @@ const initialState = {
   housesList: [],
   currentHouse: {},
   isLoading: false,
+  status: null,
 };
 
-export const fetchHouses = createAsyncThunk('houses/fetchHouses',
+export const fetchHouses = createAsyncThunk(
+  'houses/fetchHouses',
   async () => {
-    const response = await axios('http://localhost:3000/houses');
+    const response = await axios.get('http://localhost:3000/houses');
     return response.data;
-  });
+  },
+);
+
+export const createHouse = createAsyncThunk(
+  'houses/createHouse',
+  async (houseData) => {
+    const response = await axios.post('http://localhost:3000/houses', houseData);
+    return response.data;
+  },
+);
 
 export const fetchHouse = createAsyncThunk('houses/fetchHouse',
   async (id) => {
@@ -50,6 +61,21 @@ const housesSlice = createSlice({
         isLoading: false,
       }))
       .addCase(fetchHouse.rejected, (state, action) => ({
+        ...state,
+        isLoading: false,
+        error: action.error.message,
+      }));
+    builder
+      .addCase(createHouse.pending, (state) => ({
+        ...state,
+        isLoading: true,
+      }))
+      .addCase(createHouse.fulfilled, (state, action) => ({
+        ...state,
+        housesList: [...state.housesList, action.payload],
+        isLoading: false,
+      }))
+      .addCase(createHouse.rejected, (state, action) => ({
         ...state,
         isLoading: false,
         error: action.error.message,
