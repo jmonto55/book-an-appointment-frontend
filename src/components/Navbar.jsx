@@ -29,6 +29,8 @@ const Navbar = () => {
 
   useEffect(() => {
     setActiveLink(-1);
+    closeMenu();
+    setOpen(true);
   }, [location]);
 
   useEffect(() => {
@@ -52,7 +54,7 @@ const Navbar = () => {
       if (event.matches) {
         const nav = document.querySelector('nav');
         nav.style.display = 'none';
-        nav.style.position = 'fixed';
+        nav.style.position = 'absolute';
         setOpen(true);
       }
     };
@@ -77,7 +79,7 @@ const Navbar = () => {
           onClick={closeMenu}
         />
       )}
-      <nav className={`${window.innerWidth < 1340 ? 'absolute' : 'static'} bg-white z-10 relative w-1/6 min-w-[250px] max-w-[280px] h-screen flex-col p-2 pl-6 pt-28 border-r-2 hidden xl:flex`}>
+      <nav className={`${window.innerWidth < 1340 ? 'absolute' : 'static'} bg-white z-10 w-1/6 min-w-[250px] max-w-[280px] h-screen flex-col p-2 pl-6 pt-28 border-r-2 hidden xl:flex`}>
         <div className="w-1/4">
           <h1 className="font-kaushan text-3xl font-bold -rotate-12 mb-20 pl-4 underline decoration-4 underline-offset-4">Alpha Reservations</h1>
         </div>
