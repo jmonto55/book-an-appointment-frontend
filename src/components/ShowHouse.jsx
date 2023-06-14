@@ -8,7 +8,7 @@ const ShowHouse = () => {
 
   return (
     <button type="button" className="w-full relative">
-      <h2 className="mt-[70px] text-center font-black text-4xl tracking-wider">HOUSE DETAILS</h2>
+      <h2 className="mt-[120px] md:mt-[70px] text-center font-black text-4xl tracking-wider">HOUSE DETAILS</h2>
       <div className="mx-auto xl:mt-[140px] mt-6 max-w-[1840px] flex w-full flex-col items-center xl:flex-row justify-evenly">
         <div className="hover:bg-opacity-100 z-20 bg-lime p-6 pl-4 md:pl-12 rounded-r-full absolute bottom-6 md:bottom-10 left-0 border-2 border-t-0 border-l-0 border-white/25 backdrop-filter backdrop-blur-lg bg-opacity-80 shadow-xl">
           <NavLink to="/">
