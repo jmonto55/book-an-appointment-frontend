@@ -31,7 +31,7 @@ const HouseSlider = () => {
 
   return (
     <div className="flex w-full justify-between">
-      <div className=" mt-36 h-[70px] p-6 md:pl-12 bg-lime text-white-100 rounded-r-full">
+      <div className="hover:bg-opacity-100 mt-36 h-[70px] p-6 md:pl-12 bg-lime text-white-100 rounded-r-full border-2 border-t-0 border-l-0 border-white/25 backdrop-filter backdrop-blur-lg bg-opacity-80 shadow-xl">
         <BiLeftArrow onClick={prevSlide} size={20} className="cursor-pointer" />
       </div>
       <div>
@@ -68,7 +68,7 @@ const HouseSlider = () => {
           )}
         </ul>
       </div>
-      <div className="h-[70px] mt-36 p-6 md:pr-12  bg-lime text-white-100 rounded-l-full">
+      <div className="hover:bg-opacity-100 h-[70px] mt-36 p-6 md:pr-12  bg-lime text-white-100 rounded-l-full border-2 border-t-0 border-l-0 border-white/25 backdrop-filter backdrop-blur-lg bg-opacity-80 shadow-xl">
         <BiRightArrow onClick={nextSlide} size={20} className="cursor-pointer" />
       </div>
     </div>
