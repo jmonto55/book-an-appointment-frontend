@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const initialState = {
   housesList: [],
+  currentHouse: {},
   isLoading: false,
   status: null,
 };
@@ -23,6 +24,12 @@ export const createHouse = createAsyncThunk(
   },
 );
 
+export const fetchHouse = createAsyncThunk('houses/fetchHouse',
+  async (id) => {
+    const response = await axios(`http://localhost:3000/houses/${id}`);
+    return response.data;
+  });
+
 const housesSlice = createSlice({
   name: 'houses',
   initialState,
@@ -30,16 +37,35 @@ const housesSlice = createSlice({
     builder
       .addCase(fetchHouses.pending, (state) => ({
         ...state,
-        status: 'loading',
+        isLoading: true,
       }))
       .addCase(fetchHouses.fulfilled, (state, action) => ({
         ...state,
         housesList: action.payload,
-        status: 'succeeded',
+        isLoading: false,
       }))
-      .addCase(fetchHouses.rejected, (state) => ({
+      .addCase(fetchHouses.rejected, (state, action) => ({
         ...state,
-        status: 'error',
+        isLoading: false,
+        error: action.error.message,
+      }));
+
+    builder
+      .addCase(fetchHouse.pending, (state) => ({
+        ...state,
+        isLoading: true,
+      }))
+      .addCase(fetchHouse.fulfilled, (state, action) => ({
+        ...state,
+        currentHouse: action.payload,
+        isLoading: false,
+      }))
+      .addCase(fetchHouse.rejected, (state, action) => ({
+        ...state,
+
+        isLoading: false,
+        error: action.error.message,
+
       }))
       .addCase(createHouse.pending, (state) => ({
         ...state,
@@ -53,6 +79,7 @@ const housesSlice = createSlice({
       .addCase(createHouse.rejected, (state) => ({
         ...state,
         status: 'error',
+        
       }));
   },
 });
