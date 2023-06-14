@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { createHouse } from '../redux/houses/housesSlice';
 
@@ -13,6 +13,8 @@ const AddHouse = () => {
     { name: 'night_price', value: 0 },
   ];
   const [formData, setFormData] = useState(initialFormData);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const successMessageRef = useRef(null);
 
   const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
@@ -30,7 +32,22 @@ const AddHouse = () => {
     );
     dispatch(createHouse(houseData));
     setFormData(initialFormData);
+    setIsSubmitted(true);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (successMessageRef.current && !successMessageRef.current.contains(event.target)) {
+        setIsSubmitted(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="p-8 h-screen" style={{ backgroundColor: '#96bf01' }}>
@@ -57,6 +74,11 @@ const AddHouse = () => {
             pattern={field.name === 'night_price' ? '[0-9]*' : undefined}
           />
         ))}
+        {isSubmitted && (
+          <p ref={successMessageRef} className="text-green-500 mt-2">
+            Successfully created!
+          </p>
+        )}
         <button
           type="submit"
           className="rounded-full bg-yellow-400 px-6 py-2 mt-4 color text-white font-bold w-min"
