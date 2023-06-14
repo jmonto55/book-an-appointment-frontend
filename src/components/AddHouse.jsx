@@ -10,7 +10,7 @@ const AddHouse = () => {
     { name: 'description', value: '' },
     { name: 'city', value: '' },
     { name: 'photo', value: '' },
-    { name: 'night_price', value: 0 },
+    { name: 'night_price', value: '' },
   ];
   const [formData, setFormData] = useState(initialFormData);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -61,7 +61,7 @@ const AddHouse = () => {
             key={field.name}
             type={field.name === 'night_price' ? 'number' : 'text'}
             name={field.name}
-            placeholder={capitalize(field.name)}
+            placeholder={field.name === 'night_price' ? 'Price per Night' : capitalize(field.name)}
             value={field.value}
             onChange={handleChange}
             className="mt-2 w-full p-2 border border-slate-300 rounded text-sm shadow-sm
