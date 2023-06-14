@@ -9,7 +9,7 @@ import ShowHouse from './components/ShowHouse';
 
 function App() {
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className="flex w-full overflow-x-hidden">
       <Navbar />
       <Routes>
         <Route path="/" element={<HousesList />} />
