@@ -29,7 +29,7 @@ const AddHouse = () => {
       {},
     );
     dispatch(createHouse(houseData));
-    setFormData((prevFormData) => prevFormData.map((field) => (field.name === 'nightPrice' ? { ...field, value: 0 } : field)));
+    setFormData((prevFormData) => prevFormData.map((field) => (field.name === 'night_price' ? { ...field, value: 0 } : field)));
   };
 
   return (
@@ -39,7 +39,7 @@ const AddHouse = () => {
         {formData.map((field) => (
           <input
             key={field.name}
-            type={field.name === 'nightPrice' ? 'number' : 'text'}
+            type={field.name === 'night_price' ? 'number' : 'text'}
             name={field.name}
             placeholder={capitalize(field.name)}
             value={field.value}
