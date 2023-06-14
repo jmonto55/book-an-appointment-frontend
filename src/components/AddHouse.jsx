@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { BiLeftArrow } from 'react-icons/bi';
 import { NavLink } from 'react-router-dom';
+import { MdAdsClick } from 'react-icons/md';
 import { createHouse } from '../redux/houses/housesSlice';
 
 const AddHouse = () => {
@@ -58,7 +59,7 @@ const AddHouse = () => {
           <BiLeftArrow size={20} className="cursor-pointer text-white" />
         </NavLink>
       </div>
-      <div className="p-8 h-screen w-full flex flex-col justify-evenly bg-lime bg-opacity-80">
+      <div className="p-8 h-screen w-full flex flex-col justify-center gap-14 bg-lime bg-opacity-80">
         <h2 className="font-black uppercase mx-auto text-center text-4xl text-white tracking-wider">ADD A NEW HOUSE</h2>
         <form
           onSubmit={handleSubmit}
@@ -89,10 +90,10 @@ const AddHouse = () => {
           )}
           <button
             type="submit"
-            className="rounded-full bg-yellow-400 px-6 py-2 mt-4 color text-white font-bold w-min"
-            style={{ backgroundColor: '#97BF0F' }}
+            className="bg-lime rounded-full px-6 py-2 mt-6 color text-white flex items-center"
           >
-            SUBMIT
+            Submit
+            <MdAdsClick className="ml-4" />
           </button>
         </form>
       </div>
