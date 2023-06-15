@@ -14,7 +14,6 @@ function App() {
     <div className="flex w-full overflow-x-hidden">
       <Navbar />
       <Routes>
-        <Route path="/" element={<HousesList />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/home" element={<HousesList />} />
         <Route path="/reserve" element={<Reservation />} />
