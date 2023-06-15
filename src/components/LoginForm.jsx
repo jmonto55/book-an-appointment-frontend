@@ -14,6 +14,7 @@ const LoginForm = () => {
       .unwrap()
       .then((token) => {
         // Handle successful login
+        localStorage.setItem('token', token);
         console.log('Login successful');
       })
       .catch((error) => {

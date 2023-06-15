@@ -11,7 +11,12 @@ const initialState = {
 export const fetchHouses = createAsyncThunk(
   'houses/fetchHouses',
   async () => {
-    const response = await axios.get('http://localhost:3000/houses');
+    const token = localStorage.getItem('token');
+    const response = await axios.get('http://localhost:3000/houses', {
+      headers: {
+        authorization: token, // Include the token in the Authorization header
+      },
+    });
     return response.data;
   },
 );
@@ -19,14 +24,24 @@ export const fetchHouses = createAsyncThunk(
 export const createHouse = createAsyncThunk(
   'houses/createHouse',
   async (houseData) => {
-    const response = await axios.post('http://localhost:3000/houses', houseData);
+    const token = localStorage.getItem('token');
+    const response = await axios.post('http://localhost:3000/houses', houseData, {
+      headers: {
+        authorization: token, // Include the token in the Authorization header
+      },
+    });
     return response.data;
   },
 );
 
 export const fetchHouse = createAsyncThunk('houses/fetchHouse',
   async (id) => {
-    const response = await axios(`http://localhost:3000/houses/${id}`);
+    const token = localStorage.getItem('token');
+    const response = await axios(`http://localhost:3000/houses/${id}`, {
+      headers: {
+        authorization: token, // Include the token in the Authorization header
+      },
+    });
     return response.data;
   });
 
