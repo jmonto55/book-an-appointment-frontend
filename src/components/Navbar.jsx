@@ -45,6 +45,10 @@ const Navbar = () => {
     };
 
     mediaQuery1.addEventListener('change', handleMediaQueryChange);
+
+    return () => {
+      mediaQuery1.removeEventListener('change', handleMediaQueryChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -60,6 +64,10 @@ const Navbar = () => {
     };
 
     mediaQuery1.addEventListener('change', handleMediaQueryChange);
+
+    return () => {
+      mediaQuery1.removeEventListener('change', handleMediaQueryChange);
+    };
   }, []);
 
   return (
