@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import links from '../constants';
 
 const Navbar = () => (
-  <nav className="w-screen flex justify-between p-4 ">
+  <nav className="w-screen flex justify-between p-4 hidden">
     <div className="w-1/4">
       <h1>Alpha Reservations</h1>
     </div>

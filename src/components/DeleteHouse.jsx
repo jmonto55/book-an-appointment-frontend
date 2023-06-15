@@ -36,30 +36,39 @@ const DeleteHouse = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container inline-flex mx-auto ">
       <ul className="flex flex-col">
         {housesList.map((house) => (
-          <div key={house.id} className="bg-white shadow rounded-lg p-4 m-4 relative">
-            <img className="w-full rounded-lg h-auto mb-4" src={house.photo} alt={house.name} />
-            <div className="absolute top-6 right-5 bg-[#FFA500] text-white p-1 rounded-lg">
-              <span className="font-bold">
-                $
-                {house.night_price}
-              </span>
+          <div key={house.id} className="bg-white shadow rounded-lg p-4 relative">
+            <div className="relative inline-flex">
+              <img className="rounded-lg h-auto mb-4" src={house.photo} alt={house.name} />
+              <div className="absolute top-6 right-5 bg-[#FFA500] text-white p-1 rounded-lg">
+                <span className="font-bold">
+                  $
+                  {house.night_price}
+                </span>
+              </div>
             </div>
             <div className="flex flex-col justify-between">
               <div>
                 <h1 className="uppercase text-xl font-bold mb-2">{house.name}</h1>
                 <p className="mb-2">
-                  <FiInfo className="inline mr-1" />
+                  <span className="mr-1 rounded-lg">
+                    <FiInfo className="inline fill-white text-[#96BF01] mr-1" />
+                  </span>
                   {house.description}
+
                 </p>
                 <p className="mb-2">
-                  <FaMapMarkerAlt className="inline mr-1" />
+                  <span className="mr-1 rounded-lg">
+                    <FaMapMarkerAlt className="inline fill-[#96BF01] mr-1" />
+                  </span>
                   {house.address}
                 </p>
                 <p className="mb-2">
-                  <FaCity className="inline mr-1" />
+                  <span className="m-1 rounded-lg">
+                    <FaCity className="inline fill-[#96BF01]" />
+                  </span>
                   {house.city}
                 </p>
                 <button
