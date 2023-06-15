@@ -53,8 +53,8 @@ const AddHouse = () => {
   }, []);
 
   return (
-    <div className="w-full bg-center bg-cover" style={{ backgroundImage: 'url(https://rb.gy/k7lc1)' }}>
-      <div className="hover:bg-opacity-100 shadow-lg z-20 bg-gray-100 p-6 pl-4 md:pl-12 rounded-r-full absolute bottom-6 md:bottom-10 left-0 border-2 border-t-0 border-l-0 border-white/25 backdrop-filter backdrop-blur-lg bg-opacity-70">
+    <div className="relative w-full bg-center bg-cover" style={{ backgroundImage: 'url(https://rb.gy/k7lc1)' }}>
+      <div className="hover:bg-opacity-100 shadow-lg z-20 bg-gray-100 p-6 pl-4 md:pl-12 rounded-r-full absolute bottom-14 md:bottom-10 left-0 border-2 border-t-0 border-l-0 border-white/25 backdrop-filter backdrop-blur-lg bg-opacity-70">
         <NavLink to="/">
           <BiLeftArrow size={20} className="cursor-pointer text-white" />
         </NavLink>

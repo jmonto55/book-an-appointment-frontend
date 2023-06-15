@@ -100,8 +100,8 @@ const Navbar = () => {
                   closeMenu();
                 }}
                 style={({ isActive }) => ({
-                  backgroundColor: isActive ? changeStyles(index) : '#fff',
-                  color: isActive ? changeStyles(index) : '#000',
+                  backgroundColor: isActive ? setActiveLink(index) : '#fff',
+                  color: isActive ? setActiveLink(index) : '#000',
                 })}
               >
                 {link.text}
