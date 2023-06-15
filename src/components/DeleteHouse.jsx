@@ -1,3 +1,5 @@
+import { FaMapMarkerAlt, FaCity } from 'react-icons/fa';
+import { FiInfo } from 'react-icons/fi';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import Swal from 'sweetalert2';
@@ -35,9 +37,9 @@ const DeleteHouse = () => {
 
   return (
     <div className="container mx-auto">
-      <ul className="flex flex-col  ">
+      <ul className="flex flex-col">
         {housesList.map((house) => (
-          <div key={house.id} className="bg-white shadow rounded-lg p-4 m-4 relative ">
+          <div key={house.id} className="bg-white shadow rounded-lg p-4 m-4 relative">
             <img className="w-full rounded-lg h-auto mb-4" src={house.photo} alt={house.name} />
             <div className="absolute top-6 right-5 bg-[#FFA500] text-white p-1 rounded-lg">
               <span className="font-bold">
@@ -48,9 +50,18 @@ const DeleteHouse = () => {
             <div className="flex flex-col justify-between">
               <div>
                 <h1 className="uppercase text-xl font-bold mb-2">{house.name}</h1>
-                <p className="mb-2">{house.description}</p>
-                <p className="mb-2">{house.address}</p>
-                <p className="mb-2">{house.city}</p>
+                <p className="mb-2">
+                  <FiInfo className="inline mr-1" />
+                  {house.description}
+                </p>
+                <p className="mb-2">
+                  <FaMapMarkerAlt className="inline mr-1" />
+                  {house.address}
+                </p>
+                <p className="mb-2">
+                  <FaCity className="inline mr-1" />
+                  {house.city}
+                </p>
                 <button
                   type="button"
                   onClick={() => handleDelete(house.id)}
