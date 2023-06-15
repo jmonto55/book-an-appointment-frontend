@@ -6,6 +6,7 @@ import MyReservations from './components/MyReservations';
 import AddHouse from './components/AddHouse';
 import DeleteHouse from './components/DeleteHouse';
 import ShowHouse from './components/ShowHouse';
+import LoginForm from './components/LoginForm';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HousesList />} />
+        <Route path="/login" element={<LoginForm />} />
         <Route path="/reserve" element={<Reservation />} />
         <Route path="/myReservations" element={<MyReservations />} />
         <Route path="/addHouse" element={<AddHouse />} />
