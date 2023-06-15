@@ -16,6 +16,7 @@ module.exports = {
       fontFamily: {
         noto: ['Noto Sans Display', 'sans-serif'],
         kaushan: ['Kaushan Script', 'cursive'],
+        ubuntu: ['Ubuntu', 'sans-serif'],
       },
       animation: {
         'pulse-slow': 'pulse 3s linear infinite',

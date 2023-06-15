@@ -45,6 +45,10 @@ const Navbar = () => {
     };
 
     mediaQuery1.addEventListener('change', handleMediaQueryChange);
+
+    return () => {
+      mediaQuery1.removeEventListener('change', handleMediaQueryChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -60,6 +64,10 @@ const Navbar = () => {
     };
 
     mediaQuery1.addEventListener('change', handleMediaQueryChange);
+
+    return () => {
+      mediaQuery1.removeEventListener('change', handleMediaQueryChange);
+    };
   }, []);
 
   return (
@@ -100,8 +108,8 @@ const Navbar = () => {
                   closeMenu();
                 }}
                 style={({ isActive }) => ({
-                  backgroundColor: isActive ? changeStyles(index) : '#fff',
-                  color: isActive ? changeStyles(index) : '#000',
+                  backgroundColor: isActive ? setActiveLink(index) : '#fff',
+                  color: isActive ? setActiveLink(index) : '#000',
                 })}
               >
                 {link.text}
