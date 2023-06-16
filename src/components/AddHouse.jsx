@@ -12,27 +12,34 @@ const AddHouse = () => {
     { name: 'address', value: '' },
     { name: 'description', value: '' },
     { name: 'city', value: '' },
-    { name: 'photo', value: '' },
     { name: 'night_price', value: '' },
   ];
   const [formData, setFormData] = useState(initialFormData);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const successMessageRef = useRef(null);
+  const [photoFile, setPhotoFile] = useState(null);
 
   const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => prevFormData.map((field) => (
-      field.name === name ? { ...field, value } : field)));
+    const { name, value, files } = e.target;
+
+    if (name === 'photo') {
+      setPhotoFile(files[0]);
+    } else {
+      setFormData((prevFormData) => prevFormData.map((field) => (field.name === name ? { ...field, value } : field)));
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const houseData = formData.reduce(
       (data, field) => ({ ...data, [field.name]: field.value }),
       {},
     );
+    houseData.photo = photoFile;
+
     dispatch(createHouse(houseData));
     setFormData(initialFormData);
     setIsSubmitted(true);
@@ -83,10 +90,34 @@ const AddHouse = () => {
               pattern={field.name === 'night_price' ? '[0-9]*' : undefined}
             />
           ))}
+          <label className="w-full flex justify-between py-2">
+            <span className="text-white font-medium">
+              Add Photo
+            </span>
+            <input
+              key="photo"
+              type="file"
+              name="photo"
+              accept="image/*"
+              onChange={handleChange}
+              className="opacity-0 absolute inset-0 w-full h-full cursor-pointer"
+            />
+            <button
+              type="button"
+              className="px-4 py-2 rounded-xl bg-[#808000] text-white"
+              onClick={() => {
+                const input = document.querySelector('input[name="photo"]');
+                input.click();
+              }}
+            >
+              Upload
+            </button>
+          </label>
+
           {isSubmitted && (
-          <p ref={successMessageRef} className="text-green-500 mt-2">
-            Successfully created!
-          </p>
+            <p ref={successMessageRef} className="text-green-500 mt-2">
+              Successfully created!
+            </p>
           )}
           <button
             type="submit"
