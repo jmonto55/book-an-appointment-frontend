@@ -1,37 +1,17 @@
-import { useEffect } from 'react';
 import { BiChevronRightCircle } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import houseImage from '../assets/house.png';
 
 const Splash = () => {
   const navigate = useNavigate();
+
   const loginNavagtion = () => {
     navigate('/login');
   };
+
   const signupNavagtion = () => {
     navigate('/signup');
   };
-  useEffect(() => {
-    const menu = document.querySelector('#menu');
-    menu.style.display = 'none';
-    const nav = document.querySelector('nav');
-    nav.style.display = 'none';
-
-    const mediaQuery1 = window.matchMedia('(min-width: 1340px)');
-
-    const handleMediaQueryChange = (event) => {
-      if (event.matches) {
-        const nav = document.querySelector('nav');
-        nav.style.display = 'none';
-      }
-    };
-
-    mediaQuery1.addEventListener('change', handleMediaQueryChange);
-
-    return () => {
-      mediaQuery1.removeEventListener('change', handleMediaQueryChange);
-    };
-  }, []);
 
   return (
     <div className="w-screen h-screen bg-center bg-no-repeat" style={{ backgroundImage: `url(${houseImage})` }}>
