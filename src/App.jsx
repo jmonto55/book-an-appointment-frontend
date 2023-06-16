@@ -10,6 +10,7 @@ import ShowHouse from './components/ShowHouse';
 import LoginForm from './components/LoginForm';
 import Splash from './components/Splash';
 import Logout from './components/Logout';
+import SignupForm from './components/SignupForm';
 
 function App() {
   const { loginToken } = useSelector((store) => store.login);
@@ -24,6 +25,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/login" element={<LoginForm authorized={isAuthorized} />} />
+        <Route path="/signup" element={<SignupForm authorized={isAuthorized} />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/home" element={<HousesList authorized={isAuthorized} />} />
         <Route path="/reserve" element={<Reservation />} />
