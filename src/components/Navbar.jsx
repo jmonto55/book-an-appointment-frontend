@@ -5,13 +5,8 @@ import { IoMdClose } from 'react-icons/io';
 import links from '../constants';
 
 const Navbar = () => {
-  const [activeLink, setActiveLink] = useState(null);
   const [open, setOpen] = useState(true);
   const location = useLocation();
-
-  const changeStyles = (index) => {
-    setActiveLink(index);
-  };
 
   const openMenu = () => {
     setOpen(!open);
@@ -24,11 +19,11 @@ const Navbar = () => {
     if (window.innerWidth < 1340) {
       const nav = document.querySelector('nav');
       nav.style.display = 'none';
+      nav.style.position = 'absolute';
     }
   };
 
   useEffect(() => {
-    setActiveLink(-1);
     closeMenu();
     setOpen(true);
   }, [location]);
@@ -58,7 +53,6 @@ const Navbar = () => {
       if (event.matches) {
         const nav = document.querySelector('nav');
         nav.style.display = 'none';
-        nav.style.position = 'absolute';
         setOpen(true);
       }
     };
@@ -92,29 +86,26 @@ const Navbar = () => {
           <h1 className="font-kaushan text-3xl font-bold -rotate-12 mb-20 pl-4 underline decoration-4 underline-offset-4">Alpha Reservations</h1>
         </div>
         <ul className="flex flex-col w-full justify-evenly gap-5">
-          {links.map((link, index) => (
-            <li
-              className="duration-300 w-[210px] text-xl uppercase font-black py-2 pl-2"
+          {links.map((link) => (
+            <button
+              type="button"
+              className="w-[210px] flex justify-start"
               key={link.text}
-              style={{
-                backgroundColor: activeLink === index ? '#97bf0f' : '#fff',
-                color: activeLink === index ? '#f5f5f5' : '#101010',
-              }}
             >
               <NavLink
                 to={link.path}
                 onClick={() => {
-                  changeStyles(index);
                   closeMenu();
                 }}
                 style={({ isActive }) => ({
-                  backgroundColor: isActive ? setActiveLink(index) : '#fff',
-                  color: isActive ? setActiveLink(index) : '#000',
+                  backgroundColor: isActive ? '#97bf0f' : '#fff',
+                  color: isActive ? '#fff' : '#000',
                 })}
+                className="text-start w-full text-xl font-black py-2 px-2 uppercase"
               >
                 {link.text}
               </NavLink>
-            </li>
+            </button>
           ))}
         </ul>
       </nav>
