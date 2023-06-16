@@ -8,7 +8,12 @@ const initialState = {
 
 export const fetchReservations = createAsyncThunk('reservations/fetchReservations',
   async () => {
-    const response = await axios('http://localhost:3000/reservations');
+    const token = localStorage.getItem('token');
+    const response = await axios('http://localhost:3000/reservations', {
+      headers: {
+        authorization: token, // Include the token in the Authorization header
+      },
+    });
     return response.data;
   });
 

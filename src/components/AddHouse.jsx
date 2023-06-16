@@ -1,11 +1,20 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { BiLeftArrow } from 'react-icons/bi';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { MdAdsClick } from 'react-icons/md';
+import PropTypes from 'prop-types';
 import { createHouse } from '../redux/houses/housesSlice';
 
-const AddHouse = () => {
+const AddHouse = (props) => {
+  const { authorized } = props;
+  console.log('add house authorized', authorized);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!authorized) {
+      navigate('/');
+    }
+  }, [authorized, navigate]);
   const dispatch = useDispatch();
   const initialFormData = [
     { name: 'name', value: '' },
@@ -51,6 +60,9 @@ const AddHouse = () => {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
+  if (!authorized) {
+    return (<></>);
+  }
 
   return (
     <div className="relative w-full bg-center bg-cover" style={{ backgroundImage: 'url(https://rb.gy/k7lc1)' }}>
@@ -101,4 +113,7 @@ const AddHouse = () => {
   );
 };
 
+AddHouse.propTypes = {
+  authorized: PropTypes.bool.isRequired,
+};
 export default AddHouse;
