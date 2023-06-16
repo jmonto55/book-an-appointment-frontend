@@ -9,7 +9,13 @@ const initialState = {
 export const deleteHouse = createAsyncThunk(
   'houses/deleteHouse',
   async (houseId) => {
-    await axios.delete(`http://localhost:3000/houses/${houseId}`);
+    const token = localStorage.getItem('token');
+
+    await axios.delete(`http://localhost:3000/houses/${houseId}`, {
+      headers: {
+        Authorization: token,
+      },
+    });
     return houseId;
   },
 );

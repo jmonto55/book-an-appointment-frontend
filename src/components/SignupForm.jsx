@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { signup } from '../redux/signup/signupSlice';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 
+import PropTypes from 'prop-types';
+import { signup } from '../redux/signup/signupSlice';
 
 const SignupForm = (props) => {
   const { authorized } = props;
@@ -13,7 +13,7 @@ const SignupForm = (props) => {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     if (authorized) {
       navigate('/home');
@@ -21,8 +21,10 @@ const SignupForm = (props) => {
   }, [authorized, navigate]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    dispatch(signup({ name, email, password, passwordConfirmation }))
+
+    dispatch(signup({
+      name, email, password, passwordConfirmation,
+    }))
       .unwrap()
       .then((token) => {
         // Handle successful login
@@ -34,7 +36,6 @@ const SignupForm = (props) => {
         // Handle login error
         console.error('Signup error:', error);
       });
-      
   };
 
   return (
@@ -67,5 +68,7 @@ const SignupForm = (props) => {
     </form>
   );
 };
-
+SignupForm.propTypes = {
+  authorized: PropTypes.bool.isRequired,
+};
 export default SignupForm;

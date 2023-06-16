@@ -15,10 +15,10 @@ import SignupForm from './components/SignupForm';
 function App() {
   const { loginToken } = useSelector((store) => store.login);
   const { logoutToken } = useSelector((store) => store.logout);
-  let isAuthorized = false; 
+  let isAuthorized = false;
   if (loginToken || logoutToken) {
     isAuthorized = true;
-  };
+  }
   console.log('authorized', isAuthorized);
   return (
     <div className="flex w-full overflow-x-hidden">

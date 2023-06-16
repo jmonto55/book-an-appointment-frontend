@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import { BiChevronRightCircle } from 'react-icons/bi';
-import houseImage from '../assets/house.png';
 import { useNavigate } from 'react-router-dom';
+import houseImage from '../assets/house.png';
 
 const Splash = () => {
   const navigate = useNavigate();
   const loginNavagtion = () => {
     navigate('/login');
-  }
+  };
   const signupNavagtion = () => {
     navigate('/signup');
-  }
+  };
   useEffect(() => {
     const menu = document.querySelector('#menu');
     menu.style.display = 'none';

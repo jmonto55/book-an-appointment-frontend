@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from '../redux/login/loginSlice';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 
+import PropTypes from 'prop-types';
+import { login } from '../redux/login/loginSlice';
 
 const LoginForm = (props) => {
   const { authorized } = props;
@@ -11,7 +11,7 @@ const LoginForm = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     if (authorized) {
       navigate('/home');
@@ -19,7 +19,7 @@ const LoginForm = (props) => {
   }, [authorized, navigate]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     dispatch(login({ email, password }))
       .unwrap()
       .then((token) => {
@@ -32,7 +32,6 @@ const LoginForm = (props) => {
         // Handle login error
         console.error('Login error:', error);
       });
-      
   };
 
   return (
@@ -53,5 +52,7 @@ const LoginForm = (props) => {
     </form>
   );
 };
-
+LoginForm.propTypes = {
+  authorized: PropTypes.bool.isRequired,
+};
 export default LoginForm;

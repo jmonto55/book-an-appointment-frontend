@@ -1,19 +1,20 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchReservations } from '../redux/reservations/reservationsSlice';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { fetchReservations } from '../redux/reservations/reservationsSlice';
 
-export default function Reservation(props) {
+export default function MyReservations(props) {
   const dispatch = useDispatch();
   const { reservationsList } = useSelector((store) => store.reservations);
   const { authorized } = props;
   console.log('my reservations authorized', authorized);
   const navigate = useNavigate();
   useEffect(() => {
-   if (!authorized) {
-     navigate('/');
-   }
- }, [authorized, navigate]);
+    if (!authorized) {
+      navigate('/');
+    }
+  }, [authorized, navigate]);
 
   useEffect(() => {
     dispatch(fetchReservations());
@@ -31,3 +32,6 @@ export default function Reservation(props) {
     </div>
   );
 }
+MyReservations.propTypes = {
+  authorized: PropTypes.bool.isRequired,
+};
