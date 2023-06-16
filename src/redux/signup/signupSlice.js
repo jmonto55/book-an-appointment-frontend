@@ -4,11 +4,17 @@ import axios from 'axios';
 // Define the async thunk for logging in
 export const signup = createAsyncThunk('auth/signup', async (credentials) => {
   try {
-    const response = await axios.post('http://127.0.0.1:3000/signup', { user: { name: credentials.name, email: credentials.email, password: credentials.password, password_confirmation: credentials.password_confirmation } });
-    console.log(response.headers.authorization);
-    return response.headers.authorization; // Assuming the loginToken is returned in the 'authorization'
+    const response = await axios.post('http://127.0.0.1:3000/signup', {
+      user: {
+        name: credentials.name,
+        email: credentials.email,
+        password: credentials.password,
+        password_confirmation: credentials.password_confirmation,
+      },
+    });
+    return response.headers.authorization;
   } catch (error) {
-    throw new Error('Login failed');
+    throw new Error('Signup failed');
   }
 });
 

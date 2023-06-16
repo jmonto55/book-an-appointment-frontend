@@ -11,7 +11,7 @@ const store = configureStore({
     reservations: reservationsReducer,
     login: loginReducer,
     logout: logoutReducer,
-    signup: signupReducer
+    signup: signupReducer,
   },
 });
 

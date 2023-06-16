@@ -5,8 +5,7 @@ import axios from 'axios';
 export const login = createAsyncThunk('auth/login', async (credentials) => {
   try {
     const response = await axios.post('http://127.0.0.1:3000/login', { user: { email: credentials.email, password: credentials.password } });
-    console.log(response.headers.authorization);
-    return response.headers.authorization; // Assuming the loginToken is returned in the 'authorization'
+    return response.headers.authorization;
   } catch (error) {
     throw new Error('Login failed');
   }

@@ -14,7 +14,6 @@ export const fetchReservations = createAsyncThunk('reservations/fetchReservation
         authorization: token, // Include the token in the Authorization header
       },
     });
-    console.log(response.data);
     return response.data;
   });
 

@@ -15,7 +15,7 @@ export const logoutUser = createAsyncThunk(
         Authorization: token,
       },
     });
-  }
+  },
 );
 
 const logoutSlice = createSlice({
@@ -28,18 +28,21 @@ const logoutSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(logoutUser.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(logoutUser.fulfilled, (state) => {
-        state.loading = false;
-        state.logoutToken = null;
-      })
-      .addCase(logoutUser.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      });
+      .addCase(logoutUser.pending, (state) => ({
+        ...state,
+        loading: true,
+        error: null,
+      }))
+      .addCase(logoutUser.fulfilled, (state) => ({
+        ...state,
+        loading: false,
+        logoutToken: null,
+      }))
+      .addCase(logoutUser.rejected, (state, action) => ({
+        ...state,
+        loading: false,
+        error: action.error.message,
+      }));
   },
 });
 
