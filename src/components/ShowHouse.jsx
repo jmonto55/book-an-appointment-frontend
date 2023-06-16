@@ -2,10 +2,22 @@ import { useSelector } from 'react-redux';
 import { BiLeftArrow } from 'react-icons/bi';
 import { NavLink } from 'react-router-dom';
 import { MdLocationOn, MdAdsClick } from 'react-icons/md';
-
-const ShowHouse = () => {
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+const ShowHouse = (props) => {
   const { currentHouse } = useSelector((store) => store.houses);
-
+  const { authorized } = props;
+  console.log('show house authorized', authorized);
+  const navigate = useNavigate();
+  useEffect(() => {
+   if (!authorized) {
+     navigate('/');
+   }
+ }, [authorized, navigate]);
+ if (!authorized) { 
+  return (<></>);
+}
+else {
   return (
     <div type="button" className="w-full relative">
       <h2 className="mt-[120px] md:mt-[70px] text-center font-black text-4xl tracking-wider">HOUSE DETAILS</h2>
@@ -50,5 +62,6 @@ const ShowHouse = () => {
       </div>
     </div>
   );
+}
 };
 export default ShowHouse;

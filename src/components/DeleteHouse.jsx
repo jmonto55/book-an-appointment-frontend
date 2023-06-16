@@ -7,10 +7,19 @@ import { useEffect } from 'react';
 import Swal from 'sweetalert2';
 import { fetchHouses } from '../redux/houses/housesSlice';
 import { deleteHouse } from '../redux/houses/deleteHouseSlice';
+import { useNavigate } from 'react-router-dom';
 
-const DeleteHouse = () => {
+const DeleteHouse = (props) => {
   const dispatch = useDispatch();
   const { housesList } = useSelector((store) => store.houses);
+  const { authorized } = props;
+   console.log('home authorized', authorized);
+   const navigate = useNavigate();
+   useEffect(() => {
+    if (!authorized) {
+      navigate('/');
+    }
+  }, [authorized, navigate]);
 
   useEffect(() => {
     dispatch(fetchHouses());
@@ -36,7 +45,8 @@ const DeleteHouse = () => {
       }
     });
   };
-
+  if (authorized) 
+  {
   return (
     <div className="h-screen w-screen mx-auto ">
       <div className="hover:bg-opacity-100 z-20 bg-lime p-6 pl-4 md:pl-12 rounded-r-full fixed bottom-8 md:bottom-10 left-0 border-2 border-t-0 border-l-0 border-white/25 backdrop-filter backdrop-blur-lg bg-opacity-80 shadow-lg">
@@ -94,8 +104,14 @@ const DeleteHouse = () => {
         </ul>
       </div>
     </div>
-
   );
+}
+  else {
+    return (
+      <>
+      </>
+    );
+  }
 };
 
 export default DeleteHouse;

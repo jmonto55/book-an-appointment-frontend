@@ -1,8 +1,25 @@
 import { RxDotFilled } from 'react-icons/rx';
 import HouseSlider from './HouseSlider';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
-export default function HousesList() {
-  return (
+export default function HousesList(props) {
+   const { authorized } = props;
+   console.log('home authorized', authorized);
+   const navigate = useNavigate();
+   useEffect(() => {
+    if (!authorized) {
+      navigate('/');
+    }
+  }, [authorized, navigate]);
+  if (!authorized) {
+    return (
+      <>
+      </>
+    );
+  }
+  else {
+    return (
     <div className="h-screen w-full xl:w-5/6 2xl:w-full  flex flex-col justify-center">
       <h1 className="text-center text-4xl font-black tracking-wider mt-10">LATEST HOUSES</h1>
       <p className="mb-4 md:mb-10 text-center text-gray-100 text-md font-medium mt-4">Please select a House</p>
@@ -14,4 +31,5 @@ export default function HousesList() {
       <HouseSlider />
     </div>
   );
+  }
 }

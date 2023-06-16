@@ -1,26 +1,38 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../redux/login/loginSlice';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
-const LoginForm = () => {
+
+const LoginForm = (props) => {
+  const { authorized } = props;
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (authorized) {
+      navigate('/home');
+    }
+  }, [authorized, navigate]);
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     dispatch(login({ email, password }))
       .unwrap()
       .then((token) => {
         // Handle successful login
         localStorage.setItem('token', token);
         console.log('Login successful');
+        navigate('/home');
       })
       .catch((error) => {
         // Handle login error
         console.error('Login error:', error);
       });
+      
   };
 
   return (

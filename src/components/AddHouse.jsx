@@ -4,8 +4,17 @@ import { BiLeftArrow } from 'react-icons/bi';
 import { NavLink } from 'react-router-dom';
 import { MdAdsClick } from 'react-icons/md';
 import { createHouse } from '../redux/houses/housesSlice';
+import { useNavigate } from 'react-router-dom';
 
-const AddHouse = () => {
+const AddHouse = (props) => {
+  const { authorized } = props;
+   console.log('add house authorized', authorized);
+   const navigate = useNavigate();
+   useEffect(() => {
+    if (!authorized) {
+      navigate('/');
+    }
+  }, [authorized, navigate]);
   const dispatch = useDispatch();
   const initialFormData = [
     { name: 'name', value: '' },
@@ -51,7 +60,10 @@ const AddHouse = () => {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
-
+  if (!authorized) { 
+    return (<></>);
+  }
+  else {
   return (
     <div className="relative w-full bg-center bg-cover" style={{ backgroundImage: 'url(https://rb.gy/k7lc1)' }}>
       <div className="hover:bg-opacity-100 shadow-lg z-20 bg-gray-100 p-6 pl-4 md:pl-12 rounded-r-full absolute bottom-14 md:bottom-10 left-0 border-2 border-t-0 border-l-0 border-white/25 backdrop-filter backdrop-blur-lg bg-opacity-70">
@@ -99,6 +111,7 @@ const AddHouse = () => {
       </div>
     </div>
   );
+          }
 };
 
 export default AddHouse;

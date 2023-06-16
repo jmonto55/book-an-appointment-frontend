@@ -6,7 +6,7 @@ export const login = createAsyncThunk('auth/login', async (credentials) => {
   try {
     const response = await axios.post('http://127.0.0.1:3000/login', { user: { email: credentials.email, password: credentials.password } });
     console.log(response.headers.authorization);
-    return response.headers.authorization; // Assuming the token is returned in the 'authorization'
+    return response.headers.authorization; // Assuming the loginToken is returned in the 'authorization'
   } catch (error) {
     throw new Error('Login failed');
   }
@@ -16,7 +16,7 @@ export const login = createAsyncThunk('auth/login', async (credentials) => {
 const loginSlice = createSlice({
   name: 'auth',
   initialState: {
-    token: null,
+    loginToken: null,
     loading: false,
     error: null,
   },
@@ -31,7 +31,7 @@ const loginSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => ({
         ...state,
         isLoading: false,
-        token: action.payload,
+        loginToken: action.payload,
       }))
       .addCase(login.rejected, (state, action) => ({
         ...state,
