@@ -22,12 +22,17 @@ export default function MyReservations(props) {
   }, [dispatch]);
   return (
     <div>
-        {reservationsList.map((reservation) => (
-          <div key={reservation.id}>
-          <ReservationCard houseId={reservation.house_id} checkIn={reservation.check_in} checkOut={reservation.check_out} reservationId={reservation.id}/>
+      {reservationsList.map((reservation) => (
+        <div key={reservation.id}>
+          <ReservationCard
+            houseId={reservation.house_id}
+            checkIn={reservation.check_in}
+            checkOut={reservation.check_out}
+            reservationId={reservation.id}
+          />
           <hr />
-          </div>
-        ))}
+        </div>
+      ))}
     </div>
   );
 }
