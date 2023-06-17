@@ -31,6 +31,27 @@ export const deleteReservation = createAsyncThunk(
   },
 );
 
+export const reserve = createAsyncThunk('reservations/reserve', async (credentials) => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await axios.post('http://127.0.0.1:3000/reservations', {
+      reservation: {
+        house_id: credentials.houseId,
+        check_in: credentials.checkIn,
+        check_out: credentials.checkOut,
+      },
+    },
+    {
+      headers: {
+        Authorization: token,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error('reservation failed');
+  }
+});
+
 const reservationsSlice = createSlice({
   name: 'reservations',
   initialState,

@@ -26,14 +26,14 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginForm authorized={isAuthorized} />} />
         <Route path="/signup" element={<SignupForm authorized={isAuthorized} />} />
-        <Route path="/logout" element={<Logout />} />
+        <Route path="/logout" element={<Logout authorized={isAuthorized} />} />
         <Route path="/home" element={<HousesList authorized={isAuthorized} />} />
-        <Route path="/reserve" element={<Reservation />} />
+        <Route path="/reserve" element={<Reservation authorized={isAuthorized} />} />
         <Route path="/myReservations" element={<MyReservations authorized={isAuthorized} />} />
         <Route path="/addHouse" element={<AddHouse authorized={isAuthorized} />} />
         <Route path="/deleteHouse" element={<DeleteHouse authorized={isAuthorized} />} />
         <Route path="/house" element={<ShowHouse authorized={isAuthorized} />} />
-        <Route path="/" element={<Splash />} />
+        <Route path="/" element={<Splash authorized={isAuthorized} />} />
       </Routes>
     </div>
   );
