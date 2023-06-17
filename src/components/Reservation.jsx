@@ -13,6 +13,7 @@ const Reservation = (props) => {
   const [checkOut, setCheckOut] = useState('');
   const { housesList } = useSelector((store) => store.houses);
   console.log('add reservation authorized', authorized);
+  console.log('house id ', houseId);
   const navigate = useNavigate();
   useEffect(() => {
     if (!authorized) {
@@ -24,18 +25,9 @@ const Reservation = (props) => {
   }, [dispatch]);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(reserve({ houseId, checkIn, checkOut }))
-      .unwrap()
-      .then((token) => {
-        // Handle successful reserve
-        localStorage.setItem('token', token);
-        console.log('reserve is successful');
-        navigate('/home');
-      })
-      .catch((error) => {
-        // Handle reserve error
-        console.error('reserve error:', error);
-      });
+    console.log('house id', houseId, 'check in', checkIn, 'check out', checkOut);
+    dispatch(reserve({ houseId, checkIn, checkOut }));
+    navigate('/myReservations');
   };
 
   if (!authorized) {
@@ -43,44 +35,52 @@ const Reservation = (props) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="house-select">Select House:</label>
-        <select
-          id="house-select"
-          value={houseId}
-          onChange={(e) => setHouseId(e.target.value)}
-        >
-          {housesList.map((house) => (
-            <option key={house.id} value={house.id}>
-              { house.name }
-            </option>
-          ))}
-        </select>
-      </div>
+    <div className="bg-center bg-cover house-background w-full">
+      <div className="w-full h-full flex flex-col items-center bg-lime bg-opacity-80 bg-cover py-[150px]">
+        <h1 className="text-center text-white-100 font-extrabold text-5xl"> ADD A NEW RESERVATION </h1>
+        <form className="flex flex-col justify-center items-center mt-[200px] bg-gray-100 bg-opacity-70 w-[400px] p-[30px]" onSubmit={handleSubmit}>
+          <div className="my-[20px] w-full">
+            <p className="text-white-100 font-bold text-2xl">Select House:</p>
+            <select
+              id="house-select"
+              onChange={(e) => setHouseId(e.target.value)}
+              value={houseId}
+              className="w-full"
+            >
+              {housesList.map((house) => (
+                <option key={house.id} value={house.id}>
+                  { house.name }
+                </option>
+              ))}
+            </select>
+          </div>
 
-      <div>
-        <label htmlFor="check-in">Check-in:</label>
-        <input
-          id="check-in"
-          type="date"
-          value={checkIn}
-          onChange={(e) => setCheckIn(e.target.value)}
-        />
-      </div>
+          <div className="my-[20px] w-full">
+            <p className="text-white-100 font-bold text-2xl">Check in:</p>
+            <input
+              id="check-in"
+              type="date"
+              value={checkIn}
+              onChange={(e) => setCheckIn(e.target.value)}
+              className="w-full"
+            />
+          </div>
 
-      <div>
-        <label htmlFor="check-out">Check-out:</label>
-        <input
-          id="check-out"
-          type="date"
-          value={checkOut}
-          onChange={(e) => setCheckOut(e.target.value)}
-        />
-      </div>
+          <div className="my-[20px] w-full">
+            <p className="text-white-100 font-bold text-2xl">Check out:</p>
+            <input
+              id="check-out"
+              type="date"
+              value={checkOut}
+              onChange={(e) => setCheckOut(e.target.value)}
+              className="w-full"
+            />
+          </div>
 
-      <button type="submit">Submit</button>
-    </form>
+          <button className="bg-lime rounded-full px-6 py-2 mt-6 color text-white flex items-center" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
   );
 };
 

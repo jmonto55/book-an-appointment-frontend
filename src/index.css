@@ -24,3 +24,7 @@
 *::-webkit-scrollbar-thumb:hover {
   background-color: #555;
 }
+
+.house-background {
+  background-image: url("https://rb.gy/paine");
+}

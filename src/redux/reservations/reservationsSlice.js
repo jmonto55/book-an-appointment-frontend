@@ -46,6 +46,7 @@ export const reserve = createAsyncThunk('reservations/reserve', async (credentia
         Authorization: token,
       },
     });
+    console.log(response.data);
     return response.data;
   } catch (error) {
     throw new Error('reservation failed');
