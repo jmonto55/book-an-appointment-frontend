@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchReservations } from '../redux/reservations/reservationsSlice';
+import ReservationCard from './ReservationCard';
 
 export default function MyReservations(props) {
   const dispatch = useDispatch();
@@ -19,16 +20,14 @@ export default function MyReservations(props) {
   useEffect(() => {
     dispatch(fetchReservations());
   }, [dispatch]);
-
   return (
     <div>
-      <ul className="">
         {reservationsList.map((reservation) => (
-          <li key={reservation.id}>
-            <h1 className="">{reservation.check_in}</h1>
-          </li>
+          <div key={reservation.id}>
+          <ReservationCard houseId={reservation.house_id} checkIn={reservation.check_in} checkOut={reservation.check_out} reservationId={reservation.id}/>
+          <hr />
+          </div>
         ))}
-      </ul>
     </div>
   );
 }

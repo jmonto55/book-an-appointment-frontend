@@ -17,6 +17,20 @@ export const fetchReservations = createAsyncThunk('reservations/fetchReservation
     return response.data;
   });
 
+  export const deleteReservation = createAsyncThunk(
+    'reservations/deleteReservation',
+    async (reservationId) => {
+      const token = localStorage.getItem('token');
+  
+      await axios.delete(`http://localhost:3000/reservations/${reservationId}`, {
+        headers: {
+          Authorization: token,
+        },
+      });
+      return reservationId;
+    },
+  );
+
 const reservationsSlice = createSlice({
   name: 'reservations',
   initialState,
