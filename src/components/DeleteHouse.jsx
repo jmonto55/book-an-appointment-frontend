@@ -13,7 +13,7 @@ const DeleteHouse = (props) => {
   const dispatch = useDispatch();
   const { housesList } = useSelector((store) => store.houses);
   const { authorized } = props;
-  console.log('home authorized', authorized);
+
   const navigate = useNavigate();
   useEffect(() => {
     if (!authorized) {
@@ -54,7 +54,7 @@ const DeleteHouse = (props) => {
           </NavLink>
         </div>
         <div className="h-full overflow-auto">
-          <h2 className="mt-28 text-center text-4xl font-black tracking-widest mt-10">SELECT HOUSE TO DELETE</h2>
+          <h2 className="mt-28 text-center text-4xl font-black tracking-widest">SELECT HOUSE TO DELETE</h2>
           <ul className="flex flex-col justify-center gap-8 items-center py-20">
             {housesList.map((house) => (
               <div key={house.id} className="bg-white shadow rounded-lg p-4 relative">
