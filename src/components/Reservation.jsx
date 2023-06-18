@@ -11,10 +11,11 @@ const Reservation = (props) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get('id');
-  const [houseId, setHouseId] = useState(id || 0);
+  const [houseId, setHouseId] = useState(id || 1);
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const { housesList } = useSelector((store) => store.houses);
+  const { reserveError } = useSelector((store) => store.reservations);
   console.log('add reservation authorized', authorized);
   console.log('house id ', houseId);
   console.log('id', id);
@@ -31,8 +32,12 @@ const Reservation = (props) => {
     e.preventDefault();
     console.log('house id', houseId, 'check in', checkIn, 'check out', checkOut);
     dispatch(reserve({ houseId, checkIn, checkOut }));
-    navigate('/myReservations');
   };
+  useEffect(() => {
+    if (!reserveError) {
+      // navigate('/myReservations');
+    }
+  }, [reserveError, navigate]);
 
   if (!authorized) {
     return (<></>);
@@ -83,6 +88,11 @@ const Reservation = (props) => {
 
           <button className="bg-lime rounded-full px-6 py-2 mt-6 color text-white flex items-center" type="submit">Submit</button>
         </form>
+        {reserveError && (
+        <p style={{ color: reserveError === 'Your reservation has been done go check my reservations page!' ? 'green' : 'red' }}>
+          {reserveError}
+        </p>
+        )}
       </div>
     </div>
   );

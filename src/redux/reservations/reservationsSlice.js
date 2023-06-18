@@ -4,6 +4,7 @@ import axios from 'axios';
 const initialState = {
   reservationsList: [],
   isLoading: false,
+  reserveError: null,
 };
 
 export const fetchReservations = createAsyncThunk('reservations/fetchReservations',
@@ -33,24 +34,42 @@ export const deleteReservation = createAsyncThunk(
   },
 );
 
-export const reserve = createAsyncThunk('reservations/reserve', async (credentials) => {
-  const token = localStorage.getItem('token');
-  const response = await axios.post('http://127.0.0.1:3000/reservations', {
-    reservation: {
-      house_id: credentials.houseId,
-      check_in: credentials.checkIn,
-      check_out: credentials.checkOut,
-    },
+export const reserve = createAsyncThunk(
+  'reservations/reserve',
+  async (credentials, { rejectWithValue }) => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await axios.post(
+        'http://127.0.0.1:3000/reservations',
+        {
+          reservation: {
+            house_id: credentials.houseId,
+            check_in: credentials.checkIn,
+            check_out: credentials.checkOut,
+          },
+        },
+        {
+          headers: {
+            Accept: 'application/json',
+            Authorization: token,
+          },
+        },
+      );
+      console.log('reserve Response:', JSON.stringify(response.data));
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        // Handle error with response from Rails
+        console.log('Error:', error.response.data);
+        return rejectWithValue(error.response.data.base);
+      }
+
+      // Handle other errors
+      console.log('Error:', error.message);
+      return rejectWithValue(error.message);
+    }
   },
-  {
-    headers: {
-      Accept: 'application/json',
-      Authorization: token,
-    },
-  });
-  console.log('reserve Response:', JSON.stringify(response.data));
-  return response.data;
-});
+);
 
 const reservationsSlice = createSlice({
   name: 'reservations',
@@ -60,15 +79,26 @@ const reservationsSlice = createSlice({
       .addCase(fetchReservations.pending, (state) => ({
         ...state,
         status: 'loading',
+        reserveError: null,
       }))
       .addCase(fetchReservations.fulfilled, (state, action) => ({
         ...state,
         reservationsList: action.payload,
         status: 'succeeded',
+        reserveError: null,
       }))
       .addCase(fetchReservations.rejected, (state) => ({
         ...state,
         status: 'error',
+        reserveError: null,
+      }))
+      .addCase(reserve.rejected, (state, action) => ({
+        ...state,
+        reserveError: action.payload,
+      }))
+      .addCase(reserve.fulfilled, (state) => ({
+        ...state,
+        reserveError: 'Your reservation has been done go check my reservations page!',
       }));
   },
 });
