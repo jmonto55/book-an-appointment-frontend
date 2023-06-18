@@ -11,7 +11,7 @@ const Reservation = (props) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get('id');
-  const [houseId, setHouseId] = useState(id || '');
+  const [houseId, setHouseId] = useState(id || 0);
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const { housesList } = useSelector((store) => store.houses);

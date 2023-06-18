@@ -11,6 +11,7 @@ export const fetchReservations = createAsyncThunk('reservations/fetchReservation
     const token = localStorage.getItem('token');
     const response = await axios('http://localhost:3000/reservations', {
       headers: {
+        Accept: 'application/json',
         authorization: token, // Include the token in the Authorization header
       },
     });
@@ -24,6 +25,7 @@ export const deleteReservation = createAsyncThunk(
 
     await axios.delete(`http://localhost:3000/reservations/${reservationId}`, {
       headers: {
+        Accept: 'application/json',
         Authorization: token,
       },
     });
@@ -32,25 +34,22 @@ export const deleteReservation = createAsyncThunk(
 );
 
 export const reserve = createAsyncThunk('reservations/reserve', async (credentials) => {
-  try {
-    const token = localStorage.getItem('token');
-    const response = await axios.post('http://127.0.0.1:3000/reservations', {
-      reservation: {
-        house_id: credentials.houseId,
-        check_in: credentials.checkIn,
-        check_out: credentials.checkOut,
-      },
+  const token = localStorage.getItem('token');
+  const response = await axios.post('http://127.0.0.1:3000/reservations', {
+    reservation: {
+      house_id: credentials.houseId,
+      check_in: credentials.checkIn,
+      check_out: credentials.checkOut,
     },
-    {
-      headers: {
-        Authorization: token,
-      },
-    });
-    console.log(response.data);
-    return response.data;
-  } catch (error) {
-    throw new Error('reservation failed');
-  }
+  },
+  {
+    headers: {
+      Accept: 'application/json',
+      Authorization: token,
+    },
+  });
+  console.log('reserve Response:', JSON.stringify(response.data));
+  return response.data;
 });
 
 const reservationsSlice = createSlice({
