@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchHouses } from '../redux/houses/housesSlice';
 import { reserve } from '../redux/reservations/reservationsSlice';
@@ -8,12 +8,16 @@ import { reserve } from '../redux/reservations/reservationsSlice';
 const Reservation = (props) => {
   const { authorized } = props;
   const dispatch = useDispatch();
-  const [houseId, setHouseId] = useState('');
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const id = queryParams.get('id');
+  const [houseId, setHouseId] = useState(id || '');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const { housesList } = useSelector((store) => store.houses);
   console.log('add reservation authorized', authorized);
   console.log('house id ', houseId);
+  console.log('id', id);
   const navigate = useNavigate();
   useEffect(() => {
     if (!authorized) {
