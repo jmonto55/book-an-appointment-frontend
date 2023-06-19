@@ -85,7 +85,7 @@ const Reservation = (props) => {
               className="w-full"
             />
           </div>
-
+          <a href={`house\\${houseId}\\reservations`} className="bg-lime rounded-full px-6 py-2 mt-6 color text-white flex items-center" type="submit">Show house reservations</a>
           <button className="bg-lime rounded-full px-6 py-2 mt-6 color text-white flex items-center" type="submit">Submit</button>
         </form>
         {reserveError && (

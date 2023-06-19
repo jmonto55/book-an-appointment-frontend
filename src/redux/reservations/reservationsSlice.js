@@ -5,12 +5,25 @@ const initialState = {
   reservationsList: [],
   isLoading: false,
   reserveError: null,
+  houseReservationsList: [],
 };
 
 export const fetchReservations = createAsyncThunk('reservations/fetchReservations',
   async () => {
     const token = localStorage.getItem('token');
     const response = await axios('http://localhost:3000/reservations', {
+      headers: {
+        Accept: 'application/json',
+        authorization: token, // Include the token in the Authorization header
+      },
+    });
+    return response.data;
+  });
+
+export const fetchHouseReservations = createAsyncThunk('reservations/fetchHouseReservations',
+  async (houseId) => {
+    const token = localStorage.getItem('token');
+    const response = await axios(`http://localhost:3000/house/${houseId}/reservations`, {
       headers: {
         Accept: 'application/json',
         authorization: token, // Include the token in the Authorization header
@@ -85,6 +98,11 @@ const reservationsSlice = createSlice({
         ...state,
         reservationsList: action.payload,
         status: 'succeeded',
+        reserveError: null,
+      }))
+      .addCase(fetchHouseReservations.fulfilled, (state, action) => ({
+        ...state,
+        houseReservationsList: action.payload,
         reserveError: null,
       }))
       .addCase(fetchReservations.rejected, (state) => ({
