@@ -12,7 +12,6 @@
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
-  - [Deployment](#triangular_flag_on_post-deployment)
 - [Authors](#authors)
 - [Future Features](#future-features)
 - [Contributing](#contributing)
@@ -55,10 +54,10 @@ Database
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # <b>Getting Started</b><a name="getting-started"></a>
-To get a local copy up and running follow these simple example steps:
+To get a local copy up and running follow these simple example steps, you'll need both repositories, front and back end.
 
 ## <b>Setup</b>
-Clone this repository to your desired folder:
+Clone these repositories to your desired folder:
 
 `
 cd book-an-appointment
@@ -68,21 +67,36 @@ cd book-an-appointment
 git clone https://github.com/jmonto55/book-an-appointment-frontend.git
 `
 
+`
+git clone https://github.com/jmonto55/book-an-appointment-backend.git
+`
 ## <b>Install</b>
 
 Install this project with:
 
 `
-cd budget-app
+cd book-an-appointment-frontend
+`
+
+`
+npm i
+`
+
+`
+cd book-an-appointment-backend
 `
 
 `
 bundle i
 `
 
-## <b>Database</b>
+### Database
 
-Create the databases, run migrations, and populate it with seed data:
+At the backend, create the databases, run migrations, and populate it with seed data:
+
+`
+rails db:create
+`
 
 `
 rails db:migrate
@@ -92,8 +106,11 @@ rails db:migrate
 rails db:seed
 `
 
-## Usage
-To run the project run the following commands:
+### Usage
+First, fire up the server at the backend:
+
+
+Then, run the frontend with the following commands:
 
 `
 npm start
@@ -101,66 +118,33 @@ npm start
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Authors <a name="author"></a>
 
-### `npm start`
+**Jose Montoya**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- GitHub: [@jmonto55](https://github.com/jmonto55)
+- LinkedIn: [jmontodev](https://www.linkedin.com/in/jmontodev/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Mohamed Abd Elmohsen Saleh**
 
-### `npm test`
+- GitHub: [@mohamed20163858](https://github.com/mohamed20163858)
+- LinkedIn: [mohamed-mohsen-685a4995](https://www.linkedin.com/in/mohamedmohsensaleh/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Simon Gideon**
 
-### `npm run build`
+- GitHub: [@SimonGideon](https://github.com/SimonGideon)
+- LinkedIn: [mnayi-gideon](https://www.linkedin.com/in/simon-gideon/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Bryan Hurtado**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- GitHub: [@darkxdev](https://github.com/darkxdev)
+- LinkedIn: [bryan-hurtado](https://www.linkedin.com/in/bryan-hurtado/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### `npm run eject`
+## 🔭 Future Features <a name="future-features"></a>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Add image to sign up**
+- **Build APIs**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
