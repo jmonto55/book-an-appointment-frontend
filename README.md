@@ -2,7 +2,28 @@
 This is a full stack app built with React, Redux, and Ruby on Rails.<br>
 The application features authentication to access it, promps the user with a selection of houses, and a navigation bar, allowing the user to reserve, create, and delete houses.
 
-## Available Scripts
+## <b>Table of Contents</b>
+
+- [About the Project](#about-project)
+  - [Built With:](#built-with)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+  - [Live Demo](#live-demo)
+- [Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
+  - [Deployment](#triangular_flag_on_post-deployment)
+- [Authors](#authors)
+- [Future Features](#future-features)
+- [Contributing](#contributing)
+- [Show your support](#support)
+- [Acknowledgements](#acknowledgements)
+- [FAQ](#faq)
+- [License](#license)
+
 
 In the project directory, you can run:
 
