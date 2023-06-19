@@ -49,9 +49,9 @@ Database
 
 <!-- LIVE DEMO -->
 
-## 🚀 Live Demo <a name="live-demo"></a>
+## <b>Live Demo</b> <a name="live-demo"></a>
 
-- [Live Demo](https://rails-kb31.onrender.com/)
+- [Live Demo]()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
