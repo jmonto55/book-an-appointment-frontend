@@ -27,14 +27,20 @@ export default function HouseReservations(props) {
     dispatch(fetchHouse(houseId));
   }, [dispatch]);
   return (
-    <div>
-      <h1>
+    <div className="w-full flex flex-col items-center py-[20px]">
+      <h1 className="font-black text-4xl text-center my-[20px]">
         {`${currentHouse.name} `}
         Reservations Details
       </h1>
       <img src={currentHouse ? currentHouse.photo : 'loading...'} alt="house" />
-      <p className="p-4">{currentHouse ? currentHouse.description : 'loading...'}</p>
-      <p className=" p-4 flex">
+      <p className="p-4 text-2xl">
+        Description:
+        {' '}
+        {currentHouse ? currentHouse.description : 'loading...'}
+      </p>
+      <p className=" p-4 text-2xl flex">
+        Location:
+        {' '}
         <MdLocationOn size={22} />
         {' '}
         {currentHouse ? currentHouse.city : 'loading...'}
@@ -42,19 +48,26 @@ export default function HouseReservations(props) {
         {' '}
         {currentHouse ? currentHouse.address : 'loading...'}
       </p>
-      <table>
+      <p className="text-[20px] p-3 font-semibold">
+        Important Note: Here is all the reserved information for
+        {' '}
+        {currentHouse.name}
+        {' '}
+        House that will help you choose an empty time slots to reserve
+      </p>
+      <table className="w-[50%] border-collapse border border-gray-300">
         <thead>
           <tr>
-            <th>Check-in</th>
-            <th>Check-out</th>
+            <th className="py-2 px-4 border border-gray-300  text-center">Check-in</th>
+            <th className="py-2 px-4 border border-gray-300 text-center">Check-out</th>
           </tr>
         </thead>
         <tbody>
 
           {houseReservationsList ? houseReservationsList.map((reservation) => (
             <tr key={`house-reservation-${reservation.id}`}>
-              <td>{reservation.check_in}</td>
-              <td>{reservation.check_out}</td>
+              <td className="py-8 px-4 border border-gray-300 text-center"><span className="bg-green-500 text-white-100 p-3 rounded-full">{reservation.check_in}</span></td>
+              <td className="py-8 px-4 border border-gray-300 text-center"><span className="bg-red-500 text-white-100 p-3 rounded-full">{reservation.check_out}</span></td>
             </tr>
           )) : '...loading'}
 
