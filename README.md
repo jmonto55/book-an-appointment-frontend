@@ -12,7 +12,6 @@
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
-  - [Run tests](#run-tests)
   - [Deployment](#triangular_flag_on_post-deployment)
 - [Authors](#authors)
 - [Future Features](#future-features)
@@ -54,6 +53,54 @@ Database
 - [Live Demo]()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# <b>Getting Started</b><a name="getting-started"></a>
+To get a local copy up and running follow these simple example steps:
+
+## <b>Setup</b>
+Clone this repository to your desired folder:
+
+`
+cd book-an-appointment
+`
+
+`
+git clone https://github.com/jmonto55/book-an-appointment-frontend.git
+`
+
+## <b>Install</b>
+
+Install this project with:
+
+`
+cd budget-app
+`
+
+`
+bundle i
+`
+
+## <b>Database</b>
+
+Create the databases, run migrations, and populate it with seed data:
+
+`
+rails db:migrate
+`
+
+`
+rails db:seed
+`
+
+## Usage
+To run the project run the following commands:
+
+`
+npm start
+`
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ### `npm start`
 
