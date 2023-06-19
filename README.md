@@ -1,6 +1,6 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# <b>Book an Appointment | Houses - App</b>
+This is a full stack app built with React, Redux, and Ruby on Rails.<br>
+The application features authentication to access it, promps the user with a selection of houses, and a navigation bar, allowing the user to reserve, create, and delete houses.
 
 ## Available Scripts
 
