@@ -1,6 +1,4 @@
 # <b>Book an Appointment | Houses - App</b>
-This is a full stack app built with React, Redux, and Ruby on Rails.<br>
-The application features authentication to access it, promps the user with a selection of houses, and a navigation bar, allowing the user to reserve, create, and delete houses.
 
 ## <b>Table of Contents</b>
 
@@ -24,8 +22,36 @@ The application features authentication to access it, promps the user with a sel
 - [FAQ](#faq)
 - [License](#license)
 
+## <b>Budget App</b> <a name="about-project"></a>
 
-In the project directory, you can run:
+This is a full stack app built with React, Redux, Tailwind CSS, and Ruby on Rails.<br>
+The application features authentication to access it, promps the user with a selection of houses, and a navigation bar, allowing the user to reserve, create, and delete houses.
+
+## <b>Built With</b> <a name="built-with"></a>
+
+### Tech Stack : <a name="tech-stack"></a>
+Client
+- <a href="https://react.dev/">React</a>
+
+Server
+- <a href="https://rubyonrails.org/">Ruby on Rails</a>
+
+Database
+- <a href="https://www.postgresql.org/">PostgreSQL</a>
+
+### Key Features <a name="key-features"></a>
+
+- **Data Model**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LIVE DEMO -->
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+- [Live Demo](https://rails-kb31.onrender.com/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### `npm start`
 
