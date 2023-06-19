@@ -39,9 +39,11 @@ Server
 Database
 - <a href="https://www.postgresql.org/">PostgreSQL</a>
 
-### Key Features <a name="key-features"></a>
-
-- **Data Model**
+### Key Features : <a name="key-features"></a>
+- Authentication
+- Manage reservations per user
+- API calls to reserve, create and delete entities
+- Responsive design
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
