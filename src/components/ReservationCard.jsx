@@ -17,11 +17,11 @@ export default function ReservationCard(props) {
   } = props;
   const house = housesList.find((house) => house.id === houseId);
   return (
-    <div className="flex gap-x-10 my-[20px] ml-[20px]">
-      <div>
+    <div className="h-full mt-20 w-full p-4 flex gap-x-10 flex-wrap justify-center">
+      <div className="w-[375px] md:w-[600px]">
         <img src={house ? house.photo : 'loading...'} alt="house" />
       </div>
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col justify-between gap-8">
         <p className="font-black text-2xl tracking-wider">{house ? house.name : 'loading...'}</p>
         <p className="bg-gray-200 p-4">{house ? house.description : 'loading...'}</p>
         <p className="bg-gray-200 p-4 flex">

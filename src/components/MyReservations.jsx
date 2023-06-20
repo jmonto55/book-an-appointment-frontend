@@ -21,7 +21,8 @@ export default function MyReservations(props) {
     dispatch(fetchReservations());
   }, [dispatch]);
   return (
-    <div>
+    <div className="h-full w-full items-center flex-col flex">
+      <h2 className="mt-28 text-center text-4xl font-black tracking-widest">SELECT HOUSE TO DELETE</h2>
       {reservationsList.map((reservation) => (
         <div key={reservation.id}>
           <ReservationCard
