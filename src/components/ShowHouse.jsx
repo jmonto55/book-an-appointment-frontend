@@ -3,7 +3,6 @@ import { BiLeftArrow } from 'react-icons/bi';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { MdLocationOn, MdAdsClick } from 'react-icons/md';
 import PropTypes from 'prop-types';
-
 import { useEffect } from 'react';
 
 const ShowHouse = (props) => {
@@ -54,7 +53,8 @@ const ShowHouse = (props) => {
             <span className="text-4xl font-medium">{currentHouse.night_price}</span>
             night
           </div>
-          <button type="button" className="hover:bg-opacity-100 z-20 bg-lime p-6 py-2 ml-auto mt-6 rounded-full border-2 border-t-0 border-l-0 border-white/25 backdrop-filter backdrop-blur-lg bg-opacity-80 shadow-lg">
+
+          <button type="button" onClick={() => navigate(`/reserve?id=${currentHouse.id}`)} className="ml-auto flex bg-lime text-white-100 p-2 px-4 rounded-full">
             <NavLink className="flex items-center">
               Reserve
               <MdAdsClick className="ml-4" />

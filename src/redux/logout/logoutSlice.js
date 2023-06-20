@@ -12,6 +12,7 @@ export const logoutUser = createAsyncThunk(
     // Make the logout request to the backend
     await axios.delete('http://localhost:3000/logout', {
       headers: {
+        Accept: 'application/json',
         Authorization: token,
       },
     });

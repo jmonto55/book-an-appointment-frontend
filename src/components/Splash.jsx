@@ -1,10 +1,19 @@
 import { BiChevronRightCircle } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import houseImage from '../assets/house.png';
 
-const Splash = () => {
+const Splash = (props) => {
   const navigate = useNavigate();
-
+  const { authorized } = props;
+  useEffect(
+    () => {
+      if (authorized) {
+        navigate('/home');
+      }
+    },
+  );
   const loginNavagtion = () => {
     navigate('/login');
   };
@@ -33,5 +42,7 @@ const Splash = () => {
     </div>
   );
 };
-
+Splash.propTypes = {
+  authorized: PropTypes.bool.isRequired,
+};
 export default Splash;

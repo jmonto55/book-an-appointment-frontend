@@ -1,14 +1,22 @@
-import React from 'react';
+import { React, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate, NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { BiLeftArrow } from 'react-icons/bi';
 import { logoutUser } from '../redux/logout/logoutSlice';
 import houseImage from '../assets/house.jpg';
 
-const LogoutButton = () => {
+const LogoutButton = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { authorized } = props;
+  useEffect(
+    () => {
+      if (!authorized) {
+        navigate('/');
+      }
+    },
+  );
   const handleLogout = () => {
     dispatch(logoutUser());
     navigate('/');
@@ -43,5 +51,7 @@ const LogoutButton = () => {
     </div>
   );
 };
-
+LogoutButton.propTypes = {
+  authorized: PropTypes.bool.isRequired,
+};
 export default LogoutButton;
