@@ -12,7 +12,7 @@ export const fetchHouses = createAsyncThunk(
   'houses/fetchHouses',
   async () => {
     const token = localStorage.getItem('token');
-    const response = await axios.get('http://localhost:3000/houses', {
+    const response = await axios.get('https://rails-190v.onrender.com/houses', {
       headers: {
         authorization: token, // Include the token in the Authorization header
       },
@@ -25,7 +25,7 @@ export const createHouse = createAsyncThunk(
   'houses/createHouse',
   async (houseData) => {
     const token = localStorage.getItem('token');
-    const response = await axios.post('http://localhost:3000/houses', houseData, {
+    const response = await axios.post('https://rails-190v.onrender.com/houses', houseData, {
       headers: {
         authorization: token, // Include the token in the Authorization header
       },
@@ -37,7 +37,7 @@ export const createHouse = createAsyncThunk(
 export const fetchHouse = createAsyncThunk('houses/fetchHouse',
   async (id) => {
     const token = localStorage.getItem('token');
-    const response = await axios(`http://localhost:3000/houses/${id}`, {
+    const response = await axios(`https://rails-190v.onrender.com/houses/${id}`, {
       headers: {
         authorization: token, // Include the token in the Authorization header
       },

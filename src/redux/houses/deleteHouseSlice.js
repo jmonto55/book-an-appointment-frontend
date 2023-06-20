@@ -11,7 +11,7 @@ export const deleteHouse = createAsyncThunk(
   async (houseId) => {
     const token = localStorage.getItem('token');
 
-    await axios.delete(`http://localhost:3000/houses/${houseId}`, {
+    await axios.delete(`https://rails-190v.onrender.com/houses/${houseId}`, {
       headers: {
         Authorization: token,
       },
