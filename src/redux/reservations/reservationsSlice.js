@@ -11,7 +11,7 @@ const initialState = {
 export const fetchReservations = createAsyncThunk('reservations/fetchReservations',
   async () => {
     const token = localStorage.getItem('token');
-    const response = await axios('http://localhost:3000/reservations', {
+    const response = await axios('https://rails-190v.onrender.com/reservations', {
       headers: {
         Accept: 'application/json',
         authorization: token, // Include the token in the Authorization header
@@ -23,7 +23,7 @@ export const fetchReservations = createAsyncThunk('reservations/fetchReservation
 export const fetchHouseReservations = createAsyncThunk('reservations/fetchHouseReservations',
   async (houseId) => {
     const token = localStorage.getItem('token');
-    const response = await axios(`http://localhost:3000/house/${houseId}/reservations`, {
+    const response = await axios(`https://rails-190v.onrender.com/house/${houseId}/reservations`, {
       headers: {
         Accept: 'application/json',
         authorization: token, // Include the token in the Authorization header
@@ -37,7 +37,7 @@ export const deleteReservation = createAsyncThunk(
   async (reservationId) => {
     const token = localStorage.getItem('token');
 
-    await axios.delete(`http://localhost:3000/reservations/${reservationId}`, {
+    await axios.delete(`https://rails-190v.onrender.com/reservations/${reservationId}`, {
       headers: {
         Accept: 'application/json',
         Authorization: token,
@@ -53,7 +53,7 @@ export const reserve = createAsyncThunk(
     const token = localStorage.getItem('token');
     try {
       const response = await axios.post(
-        'http://127.0.0.1:3000/reservations',
+        'https://rails-190v.onrender.com/reservations',
         {
           reservation: {
             house_id: credentials.houseId,

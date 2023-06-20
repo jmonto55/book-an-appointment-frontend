@@ -4,7 +4,7 @@ import axios from 'axios';
 // Define the async thunk for logging in
 export const signup = createAsyncThunk('auth/signup', async (credentials) => {
   try {
-    const response = await axios.post('http://127.0.0.1:3000/signup', {
+    const response = await axios.post('https://rails-190v.onrender.com/signup', {
       user: {
         name: credentials.name,
         email: credentials.email,

@@ -8,7 +8,7 @@ const initialState = {
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers',
   async () => {
-    const response = await axios('http://localhost:3000/users');
+    const response = await axios('https://rails-190v.onrender.com/users');
     return response.data;
   });
 

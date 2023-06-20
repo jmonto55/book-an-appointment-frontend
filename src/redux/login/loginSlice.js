@@ -4,7 +4,7 @@ import axios from 'axios';
 // Define the async thunk for logging in
 export const login = createAsyncThunk('auth/login', async (credentials) => {
   try {
-    const response = await axios.post('http://127.0.0.1:3000/login', { user: { email: credentials.email, password: credentials.password } });
+    const response = await axios.post('https://rails-190v.onrender.com/login', { user: { email: credentials.email, password: credentials.password } });
     return response.headers.authorization;
   } catch (error) {
     throw new Error('Login failed');

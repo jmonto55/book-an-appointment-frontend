@@ -10,7 +10,7 @@ export const logoutUser = createAsyncThunk(
     localStorage.removeItem('token');
 
     // Make the logout request to the backend
-    await axios.delete('http://localhost:3000/logout', {
+    await axios.delete('https://rails-190v.onrender.com/logout', {
       headers: {
         Accept: 'application/json',
         Authorization: token,
