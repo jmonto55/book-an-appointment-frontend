@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const backendLink = "https://rails-8q41.onrender.com/";
 // Define the async thunk for logging in
 export const signup = createAsyncThunk('auth/signup', async (credentials) => {
   try {
-    const response = await axios.post('https://rails-190v.onrender.com/signup', {
+    const response = await axios.post(`${backendLink}signup`, {
       user: {
         name: credentials.name,
         email: credentials.email,

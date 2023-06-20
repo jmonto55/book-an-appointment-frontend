@@ -1,4 +1,4 @@
-# <b>Book an Appointment | Houses - App</b>
+# <b>Alpha Reservations</b>
 
 ## <b>Table of Contents</b>
 
@@ -9,6 +9,7 @@
   - [Live Demo](#live-demo)
 - [Getting Started](#getting-started)
   - [Setup](#setup)
+  - [Kanbanboards](#kanbanboards)
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
@@ -20,7 +21,7 @@
 - [FAQ](#faq)
 - [License](#license)
 
-## <b>Budget App</b> <a name="about-project"></a>
+## <b>Alpha Reservations</b> <a name="about-project"></a>
 
 This is a full stack app built with React, Redux, Tailwind CSS, and Ruby on Rails.<br>
 The application features authentication to access it, promps the user with a selection of houses, and a navigation bar, allowing the user to reserve, create, and delete houses.
@@ -45,6 +46,9 @@ Database
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Kanbanboards
+1. [Initial Kanbanboard](https://github.com/jmonto55/book-an-appointment-backend/issues/1)
+2. [Final Kanbanboard](https://github.com/jmonto55/book-an-appointment-backend/projects/2)
 <!-- LIVE DEMO -->
 
 ## <b>Live Demo</b> <a name="live-demo"></a>

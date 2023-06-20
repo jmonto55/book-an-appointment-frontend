@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const backendLink = "https://rails-8q41.onrender.com/";
+
 const initialState = {
   house: null,
   isLoading: false,
@@ -11,7 +13,7 @@ export const deleteHouse = createAsyncThunk(
   async (houseId) => {
     const token = localStorage.getItem('token');
 
-    await axios.delete(`https://rails-190v.onrender.com/houses/${houseId}`, {
+    await axios.delete(`${backendLink}houses/${houseId}`, {
       headers: {
         Authorization: token,
       },

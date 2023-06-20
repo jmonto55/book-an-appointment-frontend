@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const backendLink = "https://rails-8q41.onrender.com/";
+
 export const logoutUser = createAsyncThunk(
   'auth/logoutUser',
   async () => {
@@ -10,7 +12,7 @@ export const logoutUser = createAsyncThunk(
     localStorage.removeItem('token');
 
     // Make the logout request to the backend
-    await axios.delete('https://rails-190v.onrender.com/logout', {
+    await axios.delete(`${backendLink}logout`, {
       headers: {
         Accept: 'application/json',
         Authorization: token,

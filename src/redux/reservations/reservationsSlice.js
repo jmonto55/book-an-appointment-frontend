@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const backendLink = "https://rails-8q41.onrender.com/";
+
 const initialState = {
   reservationsList: [],
   isLoading: false,
@@ -11,7 +13,7 @@ const initialState = {
 export const fetchReservations = createAsyncThunk('reservations/fetchReservations',
   async () => {
     const token = localStorage.getItem('token');
-    const response = await axios('https://rails-190v.onrender.com/reservations', {
+    const response = await axios(`${backendLink}reservations`, {
       headers: {
         Accept: 'application/json',
         authorization: token, // Include the token in the Authorization header
@@ -23,7 +25,7 @@ export const fetchReservations = createAsyncThunk('reservations/fetchReservation
 export const fetchHouseReservations = createAsyncThunk('reservations/fetchHouseReservations',
   async (houseId) => {
     const token = localStorage.getItem('token');
-    const response = await axios(`https://rails-190v.onrender.com/house/${houseId}/reservations`, {
+    const response = await axios(`${backendLink}house/${houseId}/reservations`, {
       headers: {
         Accept: 'application/json',
         authorization: token, // Include the token in the Authorization header
@@ -37,7 +39,7 @@ export const deleteReservation = createAsyncThunk(
   async (reservationId) => {
     const token = localStorage.getItem('token');
 
-    await axios.delete(`https://rails-190v.onrender.com/reservations/${reservationId}`, {
+    await axios.delete(`${backendLink}reservations/${reservationId}`, {
       headers: {
         Accept: 'application/json',
         Authorization: token,
@@ -53,7 +55,7 @@ export const reserve = createAsyncThunk(
     const token = localStorage.getItem('token');
     try {
       const response = await axios.post(
-        'https://rails-190v.onrender.com/reservations',
+        `${backendLink}reservations`,
         {
           reservation: {
             house_id: credentials.houseId,

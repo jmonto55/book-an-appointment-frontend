@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const backendLink = "https://rails-8q41.onrender.com/";
+
 const initialState = {
   usersList: [],
   isLoading: false,
@@ -8,7 +10,7 @@ const initialState = {
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers',
   async () => {
-    const response = await axios('https://rails-190v.onrender.com/users');
+    const response = await axios(`${backendLink}users`);
     return response.data;
   });
 
