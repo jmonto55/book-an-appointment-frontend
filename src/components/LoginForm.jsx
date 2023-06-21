@@ -26,12 +26,7 @@ const LoginForm = (props) => {
       .then((token) => {
         // Handle successful login
         localStorage.setItem('token', token);
-        console.log('Login successful');
         navigate('/home');
-      })
-      .catch((error) => {
-        // Handle login error
-        console.error('Login error:', error);
       });
   };
 

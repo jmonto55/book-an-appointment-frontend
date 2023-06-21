@@ -8,7 +8,6 @@ import { useEffect } from 'react';
 const ShowHouse = (props) => {
   const { currentHouse } = useSelector((store) => store.houses);
   const { authorized } = props;
-  console.log('show house authorized', authorized);
   const navigate = useNavigate();
   useEffect(() => {
     if (!authorized) {

@@ -6,13 +6,12 @@ import PropTypes from 'prop-types';
 import { fetchHouseReservations } from '../redux/reservations/reservationsSlice';
 import { fetchHouse } from '../redux/houses/housesSlice';
 
-export default function HouseReservations(props) {
+const HouseReservations = (props) => {
   const dispatch = useDispatch();
   const { houseReservationsList } = useSelector((store) => store.reservations);
   const { currentHouse } = useSelector((store) => store.houses);
   const { authorized } = props;
   const houseId = window.location.href.split('/')[4];
-  console.log('house reservations authorized', authorized);
   const navigate = useNavigate();
   useEffect(() => {
     if (!authorized) {
@@ -75,7 +74,9 @@ export default function HouseReservations(props) {
       </table>
     </div>
   );
-}
+};
 HouseReservations.propTypes = {
   authorized: PropTypes.bool.isRequired,
 };
+
+export default HouseReservations;

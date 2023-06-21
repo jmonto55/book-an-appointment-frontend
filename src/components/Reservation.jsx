@@ -16,9 +16,6 @@ const Reservation = (props) => {
   const [checkOut, setCheckOut] = useState('');
   const { housesList } = useSelector((store) => store.houses);
   const { reserveError } = useSelector((store) => store.reservations);
-  console.log('add reservation authorized', authorized);
-  console.log('house id ', houseId);
-  console.log('id', id);
   const navigate = useNavigate();
   useEffect(() => {
     if (!authorized) {
@@ -30,7 +27,6 @@ const Reservation = (props) => {
   }, [dispatch]);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('house id', houseId, 'check in', checkIn, 'check out', checkOut);
     dispatch(reserve({ houseId, checkIn, checkOut }));
   };
   useEffect(() => {

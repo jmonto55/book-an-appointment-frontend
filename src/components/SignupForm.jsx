@@ -30,12 +30,7 @@ const SignupForm = (props) => {
       .then((token) => {
         // Handle successful login
         localStorage.setItem('token', token);
-        console.log('signup successful');
         navigate('/login');
-      })
-      .catch((error) => {
-        // Handle login error
-        console.error('Signup error:', error);
       });
   };
 
