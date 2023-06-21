@@ -6,7 +6,6 @@ import HouseSlider from './HouseSlider';
 
 const HousesList = (props) => {
   const { authorized } = props;
-  console.log('home authorized', authorized);
   const navigate = useNavigate();
   useEffect(() => {
     if (!authorized) {

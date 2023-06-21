@@ -9,7 +9,6 @@ const MyReservations = (props) => {
   const dispatch = useDispatch();
   const { reservationsList } = useSelector((store) => store.reservations);
   const { authorized } = props;
-  console.log('my reservations authorized', authorized);
   const navigate = useNavigate();
   useEffect(() => {
     if (!authorized) {

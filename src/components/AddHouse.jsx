@@ -9,7 +9,6 @@ import houseImage from '../assets/house.jpg';
 
 const AddHouse = (props) => {
   const { authorized } = props;
-  console.log('add house authorized', authorized);
   const navigate = useNavigate();
   useEffect(() => {
     if (!authorized) {

@@ -20,7 +20,6 @@ function App() {
   if (loginToken || logoutToken) {
     isAuthorized = true;
   }
-  console.log('authorized', isAuthorized);
   return (
     <div className="flex w-full overflow-x-hidden">
       <Navbar />

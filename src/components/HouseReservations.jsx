@@ -12,7 +12,6 @@ const HouseReservations = (props) => {
   const { currentHouse } = useSelector((store) => store.houses);
   const { authorized } = props;
   const houseId = window.location.href.split('/')[4];
-  console.log('house reservations authorized', authorized);
   const navigate = useNavigate();
   useEffect(() => {
     if (!authorized) {

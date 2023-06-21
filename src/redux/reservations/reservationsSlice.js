@@ -70,17 +70,14 @@ export const reserve = createAsyncThunk(
           },
         },
       );
-      console.log('reserve Response:', JSON.stringify(response.data));
       return response.data;
     } catch (error) {
       if (error.response) {
         // Handle error with response from Rails
-        console.log('Error:', error.response.data);
         return rejectWithValue(error.response.data.base);
       }
 
       // Handle other errors
-      console.log('Error:', error.message);
       return rejectWithValue(error.message);
     }
   },
