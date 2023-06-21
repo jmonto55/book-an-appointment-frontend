@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { fetchHouses } from '../redux/houses/housesSlice';
 import DeleteReservationButton from './DeleteReservationButton';
 
-export default function ReservationCard(props) {
+const ReservationCard = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchHouses());
@@ -46,10 +46,12 @@ export default function ReservationCard(props) {
       </div>
     </div>
   );
-}
+};
 ReservationCard.propTypes = {
   reservationId: PropTypes.number.isRequired,
   houseId: PropTypes.number.isRequired,
   checkIn: PropTypes.string.isRequired,
   checkOut: PropTypes.string.isRequired,
 };
+
+export default ReservationCard;

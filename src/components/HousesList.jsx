@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import HouseSlider from './HouseSlider';
 
-export default function HousesList(props) {
+const HousesList = (props) => {
   const { authorized } = props;
   console.log('home authorized', authorized);
   const navigate = useNavigate();
@@ -32,8 +32,9 @@ export default function HousesList(props) {
       <HouseSlider />
     </div>
   );
-}
+};
 
 HousesList.propTypes = {
   authorized: PropTypes.bool.isRequired,
 };
+export default HousesList;

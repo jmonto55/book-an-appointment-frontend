@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { fetchReservations } from '../redux/reservations/reservationsSlice';
 import ReservationCard from './ReservationCard';
 
-export default function MyReservations(props) {
+const MyReservations = (props) => {
   const dispatch = useDispatch();
   const { reservationsList } = useSelector((store) => store.reservations);
   const { authorized } = props;
@@ -36,7 +36,9 @@ export default function MyReservations(props) {
       ))}
     </div>
   );
-}
+};
 MyReservations.propTypes = {
   authorized: PropTypes.bool.isRequired,
 };
+
+export default MyReservations;
